@@ -1,5 +1,9 @@
+cn\mldn\dibmp\service\ISaleService.class
+cn\mldn\dibmp\vo\Goods.class
+cn\mldn\dibmp\vo\Witem.class
+cn\mldn\dibmp\service\IMemberService.class
+cn\mldn\dibmp\vo\Subtype.class
 cn\mldn\dibmp\vo\Action.class
 cn\mldn\dibmp\vo\Role.class
 cn\mldn\dibmp\vo\Dept.class
-cn\mldn\dibmp\service\IMemberService.class
 cn\mldn\dibmp\vo\Member.class

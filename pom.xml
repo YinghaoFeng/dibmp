@@ -57,6 +57,11 @@
 
 	<dependencyManagement>
 		<dependencies>
+		    <dependency>
+				<groupId>cn.mldn</groupId>
+				<artifactId>dibmp-service-sale</artifactId>
+				<version>${dibmp.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>cn.mldn</groupId>
 				<artifactId>dibmp-util</artifactId>
@@ -478,15 +483,17 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	
 	<modules>
 		<module>dibmp-util</module>
 		<module>dibmp-service-member</module>
 		<module>dibmp-api</module>
 		<module>dibmp-web</module>
 		<module>dibmp-test-service</module>
-    <module>dibmp-service-sale</module>
-    <module>dibmp-service-market</module>
-    <module>dibmp-service-finance</module>
-    <module>dibmp-service-warehouse</module>
+        <module>dibmp-service-sale</module>
+        <module>dibmp-service-market</module>
+        <module>dibmp-service-finance</module>
+        <module>dibmp-service-warehouse</module>
   </modules>
 </project>

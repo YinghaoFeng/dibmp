@@ -1,5 +1,9 @@
-D:\mvnproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\service\IMemberService.java
-D:\mvnproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Dept.java
-D:\mvnproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Role.java
-D:\mvnproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Action.java
-D:\mvnproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Member.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\service\ISaleService.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Role.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Subtype.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\service\IMemberService.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Goods.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Member.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Dept.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Action.java
+D:\webdibproject\dibmp\dibmp-api\src\main\java\cn\mldn\dibmp\vo\Witem.java
