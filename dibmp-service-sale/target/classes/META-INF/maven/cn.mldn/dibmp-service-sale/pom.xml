@@ -8,6 +8,7 @@
     <version>0.0.1</version>
   </parent>
   
+  
   <artifactId>dibmp-service-sale</artifactId>
   <name>dibmp-service-sale</name>
   <url>http://maven.apache.org</url>
