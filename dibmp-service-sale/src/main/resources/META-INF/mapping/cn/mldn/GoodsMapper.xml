@@ -91,7 +91,7 @@
 	           lastin,
 	           stornum,
 	           recorder,
-	           deflag
+	           delflag
 	    from goods
 	    <where>
 			<if test="column != null and keyWord != null">

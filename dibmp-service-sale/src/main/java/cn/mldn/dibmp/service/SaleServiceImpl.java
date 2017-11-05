@@ -1,4 +1,4 @@
-package cn.mldn.dibmp.goods.service;
+package cn.mldn.dibmp.service;
 
 import java.util.HashMap;
 import java.util.Map;
