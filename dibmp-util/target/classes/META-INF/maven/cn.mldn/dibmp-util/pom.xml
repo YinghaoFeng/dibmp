@@ -8,6 +8,9 @@
 		<artifactId>dibmp</artifactId>
 		<version>0.0.1</version>
 	</parent>
+	
+	
+	
 	<artifactId>dibmp-util</artifactId>
 	<name>dibmp-util</name>
 	<url>http://maven.apache.org</url>
