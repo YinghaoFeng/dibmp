@@ -1,5 +1,8 @@
 package cn.mldn.dibmp.service.test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -16,7 +19,7 @@ import junit.framework.TestCase;
 public class TestMemberService extends TestCase {
 	@Resource
 	private IMemberService memberService;
-
+	
 	@Test
 	public void testMembetGet() {
 		System.err.println(this.memberService.get("mldn-warehouse"));
@@ -26,4 +29,5 @@ public class TestMemberService extends TestCase {
 	public void testMembetRoleAndAction() {
 		System.err.println(this.memberService.getRoleAndActionByMember("mldn-warehouse"));
 	}
+	
 }

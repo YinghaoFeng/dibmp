@@ -16,7 +16,7 @@
 	<!-- <dubbo:monitor address="${dubbo.monitor.address}"  /> -->  <!-- 服务治理 监控中心 -->
 	<!-- <dubbo:monitor protocol="registry" /> --> 
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="cn.mldn.dibmp.service.ISaleService"
+	<dubbo:service interface="cn.mldn.dibmp.yaojia.service.ISaleService"
 		ref="saleServiceImpl" version="${dubbo.interface.version}" />
 </beans>
 

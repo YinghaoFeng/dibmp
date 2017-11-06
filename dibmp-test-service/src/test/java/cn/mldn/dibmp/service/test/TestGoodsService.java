@@ -12,9 +12,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
-import cn.mldn.dibmp.service.ISaleService;
 import cn.mldn.dibmp.vo.Goods;
+import cn.mldn.dibmp.yaojia.service.ISaleService;
 import junit.framework.TestCase;
 
 
