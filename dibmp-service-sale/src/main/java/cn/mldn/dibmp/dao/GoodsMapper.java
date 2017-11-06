@@ -35,4 +35,6 @@ public interface GoodsMapper {
 		public GoodsStorage findGoodsDetailsById(Long gid);
 		
 		public GoodsStorageAndApply findGoodsStorageApply(Long gid);
+		
+		
 }
