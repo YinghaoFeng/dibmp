@@ -3,26 +3,18 @@ package cn.mldn.dibmp.vo;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * 商品信息表
- * @author yaojia
- *
- */
 @SuppressWarnings("serial")
-public class Goods implements Serializable {
+public class GoodsStorage implements Serializable {
 
 	private Long gid;
 	private String name;
-	private Long wiid;
-	private Long stid;
 	private Double price;
 	private Double weight;
 	private String photo;
 	private String note;
 	private Date lastin; 
 	private Integer stornum;
-	private String recorder;
-	private Integer delflag;
+	private Integer num;
 	public Long getGid() {
 		return gid;
 	}
@@ -34,18 +26,6 @@ public class Goods implements Serializable {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public Long getWiid() {
-		return wiid;
-	}
-	public void setWiid(Long wiid) {
-		this.wiid = wiid;
-	}
-	public Long getStid() {
-		return stid;
-	}
-	public void setStid(Long stid) {
-		this.stid = stid;
 	}
 	public Double getPrice() {
 		return price;
@@ -83,23 +63,16 @@ public class Goods implements Serializable {
 	public void setStornum(Integer stornum) {
 		this.stornum = stornum;
 	}
-	public String getRecorder() {
-		return recorder;
+	public Integer getNum() {
+		return num;
 	}
-	public void setRecorder(String recorder) {
-		this.recorder = recorder;
-	}
-	public Integer getDelflag() {
-		return delflag;
-	}
-	public void setDelflag(Integer delflag) {
-		this.delflag = delflag;
+	public void setNum(Integer num) {
+		this.num = num;
 	}
 	@Override
 	public String toString() {
-		return "Goods [gid=" + gid + ", name=" + name + ", wiid=" + wiid + ", stid=" + stid + ", price=" + price
-				+ ", weight=" + weight + ", photo=" + photo + ", note=" + note + ", lastin=" + lastin + ", stornum="
-				+ stornum + ", recorder=" + recorder + ", delflag=" + delflag + "]";
+		return "GoodsStorage [gid=" + gid + ", name=" + name + ", price=" + price + ", weight=" + weight + ", photo="
+				+ photo + ", note=" + note + ", lastin=" + lastin + ", stornum=" + stornum + ", num=" + num + "]";
 	}
 	
 }

@@ -12,9 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
 import cn.mldn.dibmp.service.ISaleService;
 import cn.mldn.dibmp.vo.Goods;
+import cn.mldn.dibmp.vo.GoodsStorage;
 import junit.framework.TestCase;
 
 
@@ -32,6 +32,9 @@ public class TestGoodsService extends TestCase {
 	@Resource
 	private ISaleService saleService;
 
+	/**
+	 * 测试分页
+	 */
 	@Test
 	public void testGoodsList() {
 		Map<String,Object> map= this.saleService.list("", "", 1l, 5);
@@ -40,9 +43,17 @@ public class TestGoodsService extends TestCase {
 		System.err.println(this.saleService.list("", "", 1L, 5));
 	}
 	
+	/**
+	 * 则是
+	 */
 	@Test
-	public void testGoodsUpdate() {
-		Goods goods = new Goods();
+	public void testfindGoodsDetailsById() {
+		System.err.println(this.saleService.findGoodsDetailsById(1l));
+	}
+	
+	@Test
+	public void testfindGoodsStorageAndApply() {
+		System.err.println(this.saleService.findGoodsStorageApply(1L));
 		
 	}
 }

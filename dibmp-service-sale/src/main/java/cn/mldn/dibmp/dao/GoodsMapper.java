@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import cn.mldn.dibmp.vo.Goods;
+import cn.mldn.dibmp.vo.GoodsStorage;
+import cn.mldn.dibmp.vo.GoodsStorageAndApply;
 
 /**
  * 销售接口
@@ -29,4 +31,8 @@ public interface GoodsMapper {
 		public long getSplitCount(Map<String,Object> params) ;
 		
 		public long getAllCount() ;
+		
+		public GoodsStorage findGoodsDetailsById(Long gid);
+		
+		public GoodsStorageAndApply findGoodsStorageApply(Long gid);
 }

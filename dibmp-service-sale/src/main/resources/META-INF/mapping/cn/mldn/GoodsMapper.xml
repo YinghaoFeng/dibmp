@@ -18,6 +18,24 @@
 	      <result property="delflag" column="delflag"/>
 	</resultMap>
 	
+	<resultMap type="GoodsStorage" id="goodStoreMap">
+	      <result property="gid" column="gid"/>
+	      <result property="name" column="name"/>
+	      <result property="price" column="price"/>
+	      <result property="weight" column="weight"/>
+	      <result property="photo" column="photo"/>
+	      <result property="note" column="note"/>
+	      <result property="lastin" column="lastin"/>
+	      <result property="stornum" column="stornum"/>
+	      <result property="num" column="num"/>
+	</resultMap>
+	
+	<resultMap type="GoodsStorageAndApply" id="goodStoreApplyMap">
+	      <result property="pid" column="pid"/>
+	      <result property="cid" column="cid"/>
+	      <result property="wid" column="wid"/>
+	      <result property="num" column="num"/>
+	</resultMap>
 	
 	<update id="doUpdate">
 	       update goods
@@ -76,6 +94,34 @@
 	           deflag
 	    from goods
 	    where gid = #{gid}
+	</select>
+	
+	<select id="findGoodsDetailsById" resultType="GoodsStorage">
+	     select g.gid,
+	           g.name,
+	           g.price,
+	           g.weight,
+	           g.photo,
+	           g.note,
+	           g.lastin,
+	           g.stornum,
+	           sr.num
+	    from goods g 
+	        inner join 
+	        storage_record sr on g.gid=sr.gid
+	    where g.gid=#{gid}
+	</select>
+	
+	<select id="findGoodsStorageApply" resultType="GoodsStorageAndApply">
+	     select 
+	        sa.pid,
+	        sa.cid,
+	        sa.wid,
+	        sad.num
+	    from goods g 
+	        inner join storage_apply_details sad on g.gid = sad.gid
+	        inner join storage_apply sa on sa.said = sad.said
+	    where g.gid=#{gid}
 	</select>
 	
 	
