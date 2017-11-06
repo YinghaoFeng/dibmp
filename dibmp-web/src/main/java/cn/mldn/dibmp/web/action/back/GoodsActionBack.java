@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import cn.mldn.dibmp.service.ISaleService;
+import cn.mldn.dibmp.yaojia.service.ISaleService;
 import cn.mldn.util.action.abs.AbstractAction;
 import cn.mldn.web.helper.SplitPageHelper;
 
