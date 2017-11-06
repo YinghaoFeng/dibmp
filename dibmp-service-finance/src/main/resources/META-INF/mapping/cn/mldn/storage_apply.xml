@@ -5,15 +5,13 @@
   	INSERT INTO storage_apply(title,pid,cid,wiid,wid,note,status,appmid)
   	VALUES (#{title},#{pid},#{cid},#{wiid},#{wid},#{note},#{status},#{appmid})  
   </insert>
- <update id="doEditStatus" parameterMap="Map">
- 	UPDATE stuatus=#{stuatus} WHERE said=#{said}
+ <update id="doEditStatus" parameterType="map">
+ 	UPDATE storage_apply SET status=#{status} WHERE said=#{said};
  </update>
   
   <select id="findAll" resultType="StorageApply">
-  	SELECT said,title,pid,cid,wwid,wid,note,status,appmid,
-  	FROM storage_apply 
-  	<where>
-  			status=#{0}	
-  	</where>
+  	SELECT said,title,pid,cid,wiid,wid,note,status,appmid
+  	FROM storage_apply WHERE status=0
+  	
   </select>
 </mapper>

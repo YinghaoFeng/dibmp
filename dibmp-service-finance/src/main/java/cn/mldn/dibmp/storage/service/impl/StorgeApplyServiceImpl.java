@@ -20,18 +20,19 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 	public boolean add(StorageApply vo) {
 		return storagerApplyDAO.doCreate(vo);
 	}
-	
-	@Override
-	public List<StorageApply> saList() {
-		
-		return storagerApplyDAO.findAll();
-	}
 	@Override
 	public boolean updateStatus(Long said, Integer status) {
 		Map<String, Object> map = super.StringObjectMap();
+		if(said == null || status ==null) {
+			return false;
+		}
 		map.put("status", status);
 		map.put("said", said);
 		return storagerApplyDAO.doEditStatus(map);
+	}
+	@Override
+	public List<StorageApply> saList() {
+		return storagerApplyDAO.findAll();
 	}
 
 }

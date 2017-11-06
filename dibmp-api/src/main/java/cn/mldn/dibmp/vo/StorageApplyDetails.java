@@ -8,7 +8,7 @@ public class StorageApplyDetails implements Serializable {
 	 private Long gid;
 	 private String name;
 	 private Integer num;
-	 private Double pirce;
+	 private Double price;
 	 private Double weight;
 	public Long getSadid() {
 		return sadid;
@@ -34,11 +34,12 @@ public class StorageApplyDetails implements Serializable {
 	public void setNum(Integer num) {
 		this.num = num;
 	}
-	public Double getPirce() {
-		return pirce;
+	
+	public Double getPrice() {
+		return price;
 	}
-	public void setPirce(Double pirce) {
-		this.pirce = pirce;
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 	public Double getWeight() {
 		return weight;
@@ -48,9 +49,9 @@ public class StorageApplyDetails implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "StorageApplyDetails [sadid=" + sadid + ", gid=" + gid + ", name=" + name + ", num=" + num + ", pirce="
-				+ pirce + ", weight=" + weight + "]";
+		return "StorageApplyDetails [sadid=" + sadid + ", gid=" + gid + ", name=" + name + ", num=" + num + ", price="
+				+ price + ", weight=" + weight + "]";
 	}
-	 
+	
 	 
 }

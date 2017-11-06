@@ -21,11 +21,9 @@
 	<dubbo:service interface="cn.mldn.dibmp.storage.service.IStorgeApplyService"
 		ref="storgeApplyServiceImpl" version="${dubbo.interface.version}" />
 	<dubbo:service interface="cn.mldn.dibmp.storage.service.IStorgeApplyDetailsService"
-		ref="" version="${dubbo.interface.version}"/>
+		ref="storgeApplyDetailsServiceImpl" version="${dubbo.interface.version}"/>
 	<dubbo:service interface="cn.mldn.dibmp.storage.service.IStorgeRecordService"
-		ref="" version="${dubbo.interface.version}"/>
-	
-
+		ref="storgeRecordServiceImpl" version="${dubbo.interface.version}"/>
 </beans>
 
 

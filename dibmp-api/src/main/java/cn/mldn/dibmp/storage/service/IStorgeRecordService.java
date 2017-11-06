@@ -1,5 +1,7 @@
 package cn.mldn.dibmp.storage.service;
 
+import java.util.List;
+
 import cn.mldn.dibmp.vo.StorageRecord;
 
 /**
@@ -13,4 +15,9 @@ public interface IStorgeRecordService {
 	 * @return 添加成功返回true否则返回false
 	 */
 	public boolean add(StorageRecord vo);
+	/**
+	 * 查询通过审核的所有信息
+	 * @return 查询成功返回数据 否则返回null 
+	 */
+	public List<StorageRecord> rdList();
 }
