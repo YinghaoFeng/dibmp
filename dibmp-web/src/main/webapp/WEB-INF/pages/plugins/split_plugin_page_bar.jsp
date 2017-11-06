@@ -21,13 +21,14 @@
 	long allPages = 1 ;
 	int lineSize = 5 ;
 	try {
-		handleUrl = application.getAttribute("basePath2").toString() +  request.getAttribute("handleUrl") ;
+		handleUrl = application.getAttribute("basePath").toString() +  request.getAttribute("handleUrl") ;
 	} catch (Exception e) {}
 	try {
 		currentPage = (Long) request.getAttribute("currentPage") ;
 	} catch (Exception e) {}
 	try {
 		allRecorders = (Long) request.getAttribute("allRecorders") ;
+		System.out.println(handleUrl);
 	} catch (Exception e) {}
 	try {
 		lineSize = (Integer) request.getAttribute("lineSize") ;

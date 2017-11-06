@@ -113,7 +113,7 @@ CREATE TABLE subtype (
 -- 商品信息表
 CREATE TABLE goods(
 	gid		bigint auto_increment ,	
-	name		bigint ,
+	name		varchar(50) ,
 	wiid		bigint ,
 	stid		bigint ,
 	price		double ,
