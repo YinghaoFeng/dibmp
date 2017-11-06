@@ -3,6 +3,8 @@ package cn.mldn.dibmp.dao;
  * @author  定义入库商品请单详情，
  */
 
+import java.util.List;
+
 import cn.mldn.dibmp.vo.StorageApplyDetails;
 
 public interface IStorageApplyDetailsDAO {
@@ -14,8 +16,26 @@ public interface IStorageApplyDetailsDAO {
 	public boolean doCreate(StorageApplyDetails vo);
 	/**
 	 * 根据 storageApply中的said的值查询出当前用户所入库的商品信息
-	 * @param sadid   storage_apply.said = storage_apply_details.sadid
+	 * @param sadid   storage_apply.said = storage_apply_details.said
 	 * @return
 	 */
-	public StorageApplyDetails findBySadid(Long sadid);
+	public List<StorageApplyDetails> findBySaid(Long said);
+	/**
+	 * 查询当前订单中商品的总价
+	 * @param said 要查询订单编号
+	 * @return
+	 */
+	public Double findSumPrice(Long said);
+	/**
+	 * 查询当前订单中商品数量的总数
+	 * @param said  要查询的订单编号
+	 * @return
+	 */
+	public Integer findCountNum(Long said);
+	/**
+	 * 查询当前订单中商品的总价
+	 * @param sadid
+	 * @return
+	 */
+	public Double findSumSadid(Long sadid);
 }

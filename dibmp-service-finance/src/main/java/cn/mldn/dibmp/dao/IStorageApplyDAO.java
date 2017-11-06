@@ -28,4 +28,22 @@ public interface IStorageApplyDAO {
 	 * @return
 	 */
 	public List<StorageApply> findAll();
+	/**
+	 * 实现待审核清单的分页和模糊查询
+	 * @param map  要分页和模糊查询的数据
+	 * @return
+	 */
+	public List<StorageApply> findSplit(Map<String,Object> map);
+	/**
+	 * 统计当前总个数
+	 * @return
+	 */
+	public Long CountSplit(Map<String,Object> map);
+	/**
+	 * 
+	 * 通过said查询出所有的申请表中的信息
+	 * @param said  待审核表的编号
+	 * @return
+	 */
+	public StorageApply findBySaid (Long said);
 }

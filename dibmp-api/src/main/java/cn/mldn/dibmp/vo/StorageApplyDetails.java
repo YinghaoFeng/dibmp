@@ -5,11 +5,20 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class StorageApplyDetails implements Serializable {
 	 private Long sadid;
+	 private Long said;
 	 private Long gid;
 	 private String name;
 	 private Integer num;
 	 private Double price;
 	 private Double weight;
+	 
+	 
+	public Long getSaid() {
+		return said;
+	}
+	public void setSaid(Long said) {
+		this.said = said;
+	}
 	public Long getSadid() {
 		return sadid;
 	}
@@ -49,9 +58,10 @@ public class StorageApplyDetails implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "StorageApplyDetails [sadid=" + sadid + ", gid=" + gid + ", name=" + name + ", num=" + num + ", price="
-				+ price + ", weight=" + weight + "]";
+		return "StorageApplyDetails [sadid=" + sadid + ", said=" + said + ", gid=" + gid + ", name=" + name + ", num="
+				+ num + ", price=" + price + ", weight=" + weight + "]";
 	}
+	
 	
 	 
 }

@@ -1,5 +1,7 @@
 package cn.mldn.dibmp.storage.service.test;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -32,16 +34,17 @@ public class StorageApplyServiceText {
 		 System.err.println("添加" + flag);
 		 TestCase.assertTrue(flag);
 	}
-	@Test
-	public void saListtest() {
-		System.err.println("列表显示  --" + applyService.saList());
-		System.out.println("************");
-	}
+	
 	@Test
 	public void updateStatusTest(){
 		boolean flag = applyService.updateStatus(3L, 1);
 		TestCase.assertTrue(flag);
 		System.err.println("修改状态 ++ " + flag);
-		
+	}
+	@Test
+	public void SplitFontTest() {
+		 Map<String, Object> as = applyService.listSplitFont("title","加",1L,5);
+		System.err.println("分页显示 findSplit + " + as.get("findSplit"));
+		System.err.println("分页显示 CountSplit + " + as.get("CountSplit"));
 	}
 }
