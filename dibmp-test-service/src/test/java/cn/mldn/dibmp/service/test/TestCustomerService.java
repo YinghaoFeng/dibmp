@@ -30,6 +30,7 @@ public class TestCustomerService extends TestCase {
       vo.setAddress("ceshi2");
       vo.setNote("note");
       TestCase.assertTrue(saleService.add(vo));
+      
     }
     @Test
     public void testAddpre() {
