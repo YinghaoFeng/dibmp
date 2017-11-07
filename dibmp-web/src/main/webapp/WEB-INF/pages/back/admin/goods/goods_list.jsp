@@ -51,7 +51,7 @@
 							<td class="text-center"><span id="storage-1" style="cursor:pointer;">${goods.stornum}</span></td>
 							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${goods.recorder}</span></td> 
 							<td class="text-left">
-								<a href="<%=GOODS_EDIT_URL%>" class="btn btn-primary btn-xs">
+								<a href="<%=GOODS_EDIT_URL%>?gid=${goods.gid}" class="btn btn-primary btn-xs">
 										<span class="glyphicon glyphicon-edit"></span>&nbsp;编辑</a>
 								<button class="btn btn-danger btn-xs" id="out-1">
 										<span class="glyphicon glyphicon-ok-circle"></span>&nbsp;待出库</button>

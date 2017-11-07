@@ -44,4 +44,21 @@ public class TestMarketAddPre {
 	public void testList() {
 		System.err.println(goodsService.list("name", "多", 1L, 3));
 	}
+	@Test
+	public void testEditPre() {
+		System.err.println(goodsService.editPre(1L));
+	}
+	@Test
+	public void testGoodsUpdate() {
+		Goods vo=new Goods();
+		vo.setName("apaid");
+		vo.setWiid(2L);
+		vo.setStid(8L);
+		vo.setPrice(16300.0);
+		vo.setWeight(3000.0);
+//		vo.setPhoto("nophoto.jpg");
+		vo.setNote("很贵的电脑");
+		vo.setGid(1L);
+		System.err.println(goodsService.update(vo, "mldn-market"));
+	}
 }

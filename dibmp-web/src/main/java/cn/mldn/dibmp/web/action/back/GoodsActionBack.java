@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 
-import org.apache.catalina.security.SecurityUtil;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +29,7 @@ public class GoodsActionBack extends AbstractAction {
 	private ISubtypeService subtypeService;
 	@Resource
 	private IGoodsService goodsService;
+	
 	@RequestMapping("add_pre")
 	public ModelAndView addPre() {
 		ModelAndView mav = new ModelAndView(super.getPage("goods.add.page"));
@@ -72,19 +72,37 @@ public class GoodsActionBack extends AbstractAction {
 		return mav;
 	}
 	@RequestMapping("edit_pre")
-	public ModelAndView editPre() { 
+	public ModelAndView editPre(long gid) { 
 		ModelAndView mav = new ModelAndView(super.getPage("goods.edit.page"));
+		mav.addObject("Goods", goodsService.editPre(gid));
+		mav.addObject("allWitem", witemService.list());
+		mav.addObject("allSubtype",subtypeService.findByWiid(goodsService.editPre(gid).getWiid()));
 		return mav;
 	} 
 	@RequestMapping("edit")
-	public ModelAndView edit() {
+	public ModelAndView edit(Goods goods,MultipartFile pic) {
 		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
-		super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.success", TITLE);
+//		if(pic!=null) {
+//			String fileExt = pic.getOriginalFilename().substring(pic.getOriginalFilename().lastIndexOf("."));
+//			String fileName = UUID.randomUUID()+ fileExt;
+//			String filePath = super.getRequest().getServletContext().getRealPath("/upload/goods/") + UUID.randomUUID() + fileExt;
+//			try {
+//				pic.transferTo(new File(filePath));
+//				goods.setPhoto(fileName);
+				if(goodsService.update(goods, (String)SecurityUtils.getSubject().getSession().getAttribute("mid"))) {
+					super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.success", TITLE);
+				}else {
+					super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.failure", TITLE);
+				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.failure", TITLE);
+//			} // 进行文件转存
+//		}
 		return mav;
 	}
 	@RequestMapping("list") 
 	public ModelAndView list() {
-		
 		SplitPageUtil spu = new SplitPageUtil("商品编号:gid|商品名称:name|录入员工:recorder",super.getPage("goods.list.action")) ;
 		ModelAndView mav = new ModelAndView(super.getPage("goods.list.page"));
 		mav.addAllObjects(goodsService.list(spu.getColumn(), spu.getKeyWord(), spu.getCurrentPage(), spu.getLineSize()));

@@ -29,8 +29,17 @@ public class GoodsServiceImpl extends AbstractService implements IGoodsService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("allGoods", goodsDAO.findAllSplit(super.paramToMap(currentPage, lineSize, column, keyWord)));
 		map.put("allRecorders", goodsDAO.getSplitCount(super.paramToMap(column, keyWord)));
-		
 		return map;
+	}
+	@Override
+	public Goods editPre(long gid) {
+		return goodsDAO.findById(gid);
+	}
+	@Override
+	public boolean update(Goods vo,String mid) {
+		vo.setLastin(new Date());
+		vo.setRecorder(mid);
+		return goodsDAO.doEdit(vo);
 	}
 
 }

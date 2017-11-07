@@ -16,4 +16,8 @@ public interface IGoodsDAO {
 //	public Long getAllCount();
 	
 	public Long getSplitCount(Map<String,Object> params);
+	
+	public Goods findById(Long gid);
+	
+	public boolean doEdit(Goods vo);
 }

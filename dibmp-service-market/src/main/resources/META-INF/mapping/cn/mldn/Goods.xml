@@ -32,4 +32,14 @@
 			</choose>
 		</where>
 	</select>
+	<select id="findById" parameterType="long" resultType="Goods">
+		SELECT gid,name,wiid,stid,price,weight,photo,note,lastin,stornum,recorder,delflag 
+		FROM goods WHERE gid=#{gid}
+	</select>
+	<update id="doEdit" parameterType="Goods">
+		UPDATE goods 
+		SET name=#{name},stid=#{stid},price=#{price},
+			photo=#{photo},note=#{note},lastin=#{lastin},recorder=#{recorder}
+		WHERE gid=#{gid};
+	</update>
 </mapper>
