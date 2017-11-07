@@ -21,11 +21,7 @@
 	long allPages = 1 ;
 	int lineSize = 5 ;
 	try {
-<<<<<<< HEAD
 		handleUrl = application.getAttribute("basePath").toString() +  request.getAttribute("handleUrl") ;
-=======
-		handleUrl = application.getAttribute("basePath").toString() +request.getAttribute("handleUrl");
->>>>>>> refs/remotes/origin/wt
 	} catch (Exception e) {}
 	try {
 		currentPage = (Long) request.getAttribute("currentPage") ;
