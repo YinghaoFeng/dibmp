@@ -13,10 +13,15 @@
 	<!-- 定义访问的注册中心类型以及访问地址 -->
 	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" />
 	<!-- 定义要引用的注册接口信息，一定要注意访问版本 -->
+<<<<<<< HEAD
 	<dubbo:reference id="memberInstance"
 		interface="cn.mldn.dibmp.service.IMemberService" version="${dubbo.interface.version}" />
 	<dubbo:reference id="witemInstance" interface="cn.mldn.dibmp.ccc.service.IWitemService" version="${dubbo.interface.version}" />
 	<dubbo:reference id="subtypeInstance" interface="cn.mldn.dibmp.ccc.service.ISubtypeService" version="${dubbo.interface.version}" />
 	<dubbo:reference id="goodsInstance" interface="cn.mldn.dibmp.ccc.service.IGoodsService" version="${dubbo.interface.version}" />
 	
+=======
+	<dubbo:reference id="saleInstance"
+		interface="cn.mldn.dibmp.yaojia.service.ISaleService" version="${dubbo.interface.version}" />
+>>>>>>> refs/remotes/origin/jdk
 </beans>

@@ -101,6 +101,9 @@ public class GoodsActionBack extends AbstractAction {
 //		}
 		return mav;
 	}
+	
+//	private Logger logger = LoggerFactory.getLogger(GoodsActionBack.class);
+	
 	@RequestMapping("list") 
 	public ModelAndView list() {
 		SplitPageUtil spu = new SplitPageUtil("商品编号:gid|商品名称:name|录入员工:recorder",super.getPage("goods.list.action")) ;

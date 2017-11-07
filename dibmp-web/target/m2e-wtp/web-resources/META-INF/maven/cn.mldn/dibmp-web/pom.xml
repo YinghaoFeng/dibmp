@@ -15,7 +15,13 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	
 	<dependencies>
+	     <dependency>
+		 <groupId>cn.mldn</groupId>
+		 <artifactId>dibmp-service-sale</artifactId>
+	</dependency>
 		<dependency>
 			<groupId>cn.mldn</groupId>
 			<artifactId>dibmp-util</artifactId>
