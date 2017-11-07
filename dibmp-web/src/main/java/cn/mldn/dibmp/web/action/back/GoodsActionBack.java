@@ -41,6 +41,11 @@ public class GoodsActionBack extends AbstractAction {
 	public Object findByWiid(long wiid) {
 		return subtypeService.findByWiid(wiid);
 	}
+	@RequestMapping("findByName")
+	@ResponseBody
+	public Object findByName(String name) {
+		return goodsService.findByName(name)!=null;
+	}
 	@RequestMapping("add")
 	public ModelAndView add(Goods goods, MultipartFile pic) {
 		

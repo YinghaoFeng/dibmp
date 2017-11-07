@@ -6,6 +6,12 @@ import cn.mldn.dibmp.vo.Goods;
 
 public interface IGoodsService {
 	/**
+	 * 根据用户输入的商品名称，查询数据库是否有重复商品
+	 * @param goods 商品名称
+	 * @return 重复返回true
+	 */
+	public Goods findByName(String name);
+	/**
 	 * 增加新的商品
 	 * @param vo 新增商品信息
 	 * @param mid 增加商品的人

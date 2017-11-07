@@ -14,8 +14,6 @@ import cn.mldn.dibmp.dao.IStorageApplyDetailsDAO;
 import cn.mldn.dibmp.service.abc.AbstractStirageService;
 import cn.mldn.dibmp.storage.service.IStorgeApplyService;
 import cn.mldn.dibmp.vo.StorageApply;
-import cn.mldn.dibmp.vo.StorageApplyDetails;
-import cn.mldn.util.service.abs.AbstractService;
 @Service
 public class StorgeApplyServiceImpl extends AbstractStirageService implements IStorgeApplyService{
 	@Resource
@@ -23,7 +21,9 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 	@Resource
 	private IStorageApplyDetailsDAO applyDetailsDAO;
 	@Override
-	public boolean add(StorageApply vo) {
+	public boolean add(StorageApply vo,String mid) {
+		vo.setStatus(0);//待提交
+		vo.setAppmid(mid);//申请人
 		return storagerApplyDAO.doCreate(vo);
 	}
 	@Override

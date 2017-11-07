@@ -17,11 +17,18 @@ public class GoodsServiceImpl extends AbstractService implements IGoodsService {
 	@Resource
 	private IGoodsDAO goodsDAO;
 	@Override
+	public Goods findByName(String name) {
+		return goodsDAO.findByName(name);
+	}
+	@Override
 	public boolean add(Goods vo,String mid) {
 		vo.setLastin(new Date());
 		vo.setStornum(0L);//增加是库存量为0
 		vo.setRecorder(mid);
 		vo.setDelflag(0);
+		if(goodsDAO.findByName(vo.getName())!=null) {
+			return false;
+		}
 		return goodsDAO.doCreate(vo);
 	}
 	@Override

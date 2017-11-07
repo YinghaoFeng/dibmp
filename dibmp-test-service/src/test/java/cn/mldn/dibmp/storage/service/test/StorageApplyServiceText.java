@@ -30,7 +30,7 @@ public class StorageApplyServiceText {
 		 sa.setTitle("sndishiss");
 		 sa.setWid(01L);
 		 sa.setWiid(02L);
-		 boolean flag = applyService.add(sa);
+		 boolean flag = applyService.add(sa,"mldn-sale");
 		 System.err.println("添加" + flag);
 		 TestCase.assertTrue(flag);
 	}

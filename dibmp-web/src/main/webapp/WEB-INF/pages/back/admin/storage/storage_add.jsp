@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="/WEB-INF/pages/plugins/back/back_header.jsp"/>
 <%!
-	public static final String STORAGE_ADD_URL = "" ;
+	public static final String STORAGE_ADD_URL = "pages/back/admin/storage/add.action" ;
 %>
 <script type="text/javascript" src="js/pages/back/admin/storage/storage_add.js"></script>
 <body class="hold-transition skin-blue sidebar-mini"> 

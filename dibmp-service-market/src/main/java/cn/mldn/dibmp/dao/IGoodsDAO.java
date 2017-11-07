@@ -16,6 +16,12 @@ public interface IGoodsDAO {
 //	public Long getAllCount();
 	
 	public Long getSplitCount(Map<String,Object> params);
+	/**
+	 * 根据商品名称查询商品信息
+	 * @param name 商品名称
+	 * @return 商品信息
+	 */
+	public Goods findByName(String name);
 	
 	public Goods findById(Long gid);
 	

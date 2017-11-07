@@ -61,4 +61,8 @@ public class TestMarketAddPre {
 		vo.setGid(1L);
 		System.err.println(goodsService.update(vo, "mldn-market"));
 	}
+	@Test
+	public void testFindByName() {
+		System.err.println(goodsService.findByName("冯大傻傻叉"));
+	}
 }

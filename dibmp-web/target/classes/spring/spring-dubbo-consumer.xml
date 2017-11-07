@@ -20,5 +20,4 @@
 	<dubbo:reference id="saleInstance" interface="cn.mldn.dibmp.yaojia.service.ISaleService" version="${dubbo.interface.version}" />
 	<dubbo:reference id="cityInstance"	interface="cn.mldn.dibmp.ccc.service.ICityService" version="${dubbo.interface.version}" />
 	<dubbo:reference id="warehouseInstance" interface="cn.mldn.dibmp.fyh.service.IWarehouseService" version="${dubbo.interface.version}" />
-	
 </beans>

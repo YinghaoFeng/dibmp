@@ -41,7 +41,31 @@ $(function(){
 		errorClass : "text-danger",
 		rules : {
 			"name" : {
-				required : true
+				required : true,
+				remote : {
+					url : "pages/back/admin/goods/findByName.action", // 后台处理程序
+					type : "post", // 数据发送方式
+					dataType : "text", // 接受数据格式
+					data : { // 要传递的数据
+						"name" : function() {
+							return $("#name").val();
+						}
+					},
+					dataFilter : function(data, type) {
+						if (data.trim() == "false"){//不重复
+							$("#nameMsg").empty();
+							return true;
+						}else{
+							$("#name").fadeOut(1,function() {
+								$("#name").fadeIn(1, function() {
+									$("#nameMsg").empty();
+									$("#nameMsg").attr("class","form-group has-error").append("<lable class='"+"form-group has-error text-danger"+"'>商品名称已存在</lable>");
+								});
+							})
+							return false;
+						}
+					}
+				}
 			} ,
 			"wiid" : {
 				required : true
