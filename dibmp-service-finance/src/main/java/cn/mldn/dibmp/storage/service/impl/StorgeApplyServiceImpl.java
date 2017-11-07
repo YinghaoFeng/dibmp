@@ -28,7 +28,7 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 	}
 	@Override
 	public boolean updateStatus(Long said, Integer status) {
-		Map<String, Object> map = new HashMap<String,Object>();
+		Map<String, Object> map = super.StringObjectMap();
 		if(said == null || status ==null) {
 			return false;
 		}
@@ -39,7 +39,7 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 
 	@Override
 	public Map<String,Object> listSplitFont(String column, String keyWord, Long currentPage, Integer lineSize) {
-		Map<String,Object> map = new HashMap<String,Object>();
+		Map<String,Object> map = super.StringObjectMap();
 		if(super.isEmptyString(column, keyWord)) {
 			map.put("column",null);
 		}else {
@@ -49,15 +49,20 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		map.put("startPage",(currentPage-1)*lineSize);
 		map.put("lineSize", lineSize);
 		Map<String,Object> maps = new HashMap<String,Object>();
+		Map<Long, Object> sumMap = super.LongObjectMap();
+		Map<Long, Object> countMap = super.LongObjectMap();
 		List<StorageApply> apply = storagerApplyDAO.findSplit(map);
 		Iterator<StorageApply> rs = apply.iterator();
-		if(rs.hasNext()) {
-			StorageApply sApply = rs.next(); 
-			maps.put("CountNum", applyDetailsDAO.findCountNum(sApply.getSaid()));	  
-			maps.put("SumPrice", applyDetailsDAO.findSumPrice(sApply.getSaid()));
+		while(rs.hasNext()){
+			StorageApply sApply = new StorageApply();
+			sApply = rs.next(); 
+			countMap.put(sApply.getSaid(),applyDetailsDAO.findCountNum(sApply.getSaid()));	  
+			sumMap.put(sApply.getSaid(),applyDetailsDAO.findSumPrice(sApply.getSaid()));
 		}
-		maps.put("findSplit", apply);
-		maps.put("CountSplit", storagerApplyDAO.CountSplit(map));
+		maps.put("findSplit",apply);
+		maps.put("CountNum",countMap);
+		maps.put("SumPrice",sumMap);
+		maps.put("CountSplit",storagerApplyDAO.CountSplit(map));
 		return maps;
 	}
 }

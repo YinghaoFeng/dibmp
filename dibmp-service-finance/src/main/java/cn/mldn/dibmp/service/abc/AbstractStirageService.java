@@ -12,6 +12,10 @@ public abstract class AbstractStirageService {
 		 HashMap<String, Object> map = new HashMap<String,Object>();
 		return map;
 	}
+	protected Map<Long, Object> LongObjectMap() {
+		 HashMap<Long, Object> map = new HashMap<Long,Object>();
+		return map;
+	}
 	
 	public boolean  isEmptyString(String culumn,String keyWord) {
 		if("".equals(culumn)||"".equals(keyWord)) {

@@ -43,8 +43,9 @@ public class StorageApplyServiceText {
 	}
 	@Test
 	public void SplitFontTest() {
-		 Map<String, Object> as = applyService.listSplitFont("title","加",1L,5);
+		 Map<String, Object> as = applyService.listSplitFont("title","",1L,5);
 		System.err.println("分页显示 findSplit + " + as.get("findSplit"));
 		System.err.println("分页显示 CountSplit + " + as.get("CountSplit"));
+		
 	}
 }
