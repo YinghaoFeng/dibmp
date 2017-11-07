@@ -42,9 +42,9 @@
 								<div class="col-md-5">
 									<select id="pid" name="pid" class="form-control">
 										<option value="">====== 请选择所在省份 ======</option>
-										<option value="1">河北省</option>
-										<option value="2">山西部</option>
-										<option value="3">广东省</option>
+									<c:forEach items="${allProvinces}" var="province">
+										<option value="${province.pid}">${province.title}</option>
+									</c:forEach>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
@@ -68,11 +68,11 @@
 								<!-- 定义表单提示文字 -->
 								<label class="col-md-3 control-label" for="iid">商品类型：</label>
 								<div class="col-md-5">
-									<select id="iid" name="iid" class="form-control">
+									<select id="wiid" name="wiid" class="form-control">
 										<option value="">====== 请选择库存商品类型 ======</option>
-										<option value="1">服装</option>
-										<option value="2">家电</option>
-										<option value="3">电子</option>
+										<c:forEach items="${allWitem}" var="witem">
+											<option value="${witem.wiid}">${witem.title}</option>
+										</c:forEach>
 									</select>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->

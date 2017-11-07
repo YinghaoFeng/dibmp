@@ -10,4 +10,10 @@ public interface CityMapper {
 	 * @return
 	 */
    public List<City> findAll();
+   /**
+    * 根据省份编号找到城市列表
+    * @param pid
+    * @return
+    */
+   public List<City> findByProvince(Long pid);
 }

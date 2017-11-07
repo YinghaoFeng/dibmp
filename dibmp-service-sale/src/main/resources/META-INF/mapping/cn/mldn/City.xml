@@ -5,4 +5,7 @@
 	<select id="findAll" parameterType="String" resultType="City">
 		SELECT cid,pid,title FROM city ;
 	</select>
+	<select id="findByProvince" parameterType="Long" resultType="City">
+		SELECT cid,title FROM city WHERE pid=#{pid}
+	</select>
 </mapper>

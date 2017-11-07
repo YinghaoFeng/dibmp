@@ -11,17 +11,6 @@ import cn.mldn.util.web.SplitPageUtil;
 @RequestMapping("/pages/back/admin/storage/*")
 public class StorageActionBack extends AbstractAction {
 	private static final String TITLE = "商品入库" ;
-	@RequestMapping("add_pre")
-	public ModelAndView addPre() {
-		ModelAndView mav = new ModelAndView(super.getPage("storage.add.page"));
-		return mav;
-	}
-	@RequestMapping("add")
-	public ModelAndView add() {
-		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
-		super.setMsgAndUrl(mav, "storage.add.action", "vo.add.success", TITLE);
-		return mav;
-	}
 	@RequestMapping("edit_pre")
 	public ModelAndView editPre() {
 		ModelAndView mav = new ModelAndView(super.getPage("storage.edit.page"));
