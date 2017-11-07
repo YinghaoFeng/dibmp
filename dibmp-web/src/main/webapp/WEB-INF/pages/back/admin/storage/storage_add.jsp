@@ -112,7 +112,7 @@
 							</div>
 						</fieldset>
 					</form>
-				</div>
+				</div> 
 				<div class="panel-footer" style="height:100px;">
 					<jsp:include page="/WEB-INF/pages/plugins/include_alert.jsp"/>
 				</div>
