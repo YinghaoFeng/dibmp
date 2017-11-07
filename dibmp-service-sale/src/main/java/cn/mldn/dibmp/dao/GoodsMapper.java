@@ -6,6 +6,7 @@ import java.util.Map;
 import cn.mldn.dibmp.vo.Goods;
 import cn.mldn.dibmp.vo.GoodsStorage;
 import cn.mldn.dibmp.vo.GoodsStorageAndApply;
+import cn.mldn.dibmp.vo.GoodsStorageDetails;
 
 /**
  * 销售接口
@@ -35,6 +36,8 @@ public interface GoodsMapper {
 		public GoodsStorage findGoodsDetailsById(Long gid);
 		
 		public GoodsStorageAndApply findGoodsStorageApply(Long gid);
+		
+		public GoodsStorageDetails findGoodsStorageDetails(Long gid);
 		
 		
 }

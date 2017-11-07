@@ -4,8 +4,8 @@ package cn.mldn.dibmp.service;
 import java.util.Map;
 
 import cn.mldn.dibmp.vo.Goods;
-import cn.mldn.dibmp.vo.GoodsStorage;
 import cn.mldn.dibmp.vo.GoodsStorageAndApply;
+import cn.mldn.dibmp.vo.GoodsStorageDetails;
 
 /**
  * 定义销售业务接口
@@ -40,7 +40,6 @@ public interface ISaleService {
 	
 	public Map<String,Object> findGoodsDetailsById(Long gid);
 	
-	//public GoodsStorage findGoodsDetailsById(Long gid);
 	
 	/**
 	 * 根据商品gid查询商品仓库信息
@@ -49,4 +48,24 @@ public interface ISaleService {
 	 */
 	public GoodsStorageAndApply findGoodsStorageApply(Long gid);
 	
+	/**
+	 * 商品库存详情
+	 * @param gid
+	 * @return
+	 */
+	public GoodsStorageDetails findGoodsStorageDetails(Long gid);
+	
+	/**
+	 * 
+	 * @param gid
+	 * @return
+	 */
+	public GoodsStorageDetails findAllGoodsStorageDetails(Long gid);
+	
+	/**
+	 * 通过Redis中取得商品数据和查询商所对应的顾客
+	 * @param name 销售人员id
+	 * @return
+	 */
+	public Map<String,Object> findAllUnStorageGoods(String nameId);
 }

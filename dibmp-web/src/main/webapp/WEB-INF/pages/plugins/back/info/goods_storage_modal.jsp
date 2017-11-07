@@ -19,13 +19,8 @@
 								<th class="text-center" style="width:10%;">库存数量</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr class="text-primary">
-								<td class="text-left">通州一号仓库</td>
-								<td class="text-center">北京</td>
-								<td class="text-center">北京</td>
-								<td class="text-center">2000</td>
-							</tr>
+						<tbody id="details">
+							
 						</tbody>
 					</table>
 				</div>

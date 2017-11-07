@@ -47,11 +47,27 @@ public class TestGoodsService extends TestCase {
 	@Test
 	public void testfindGoodsDetailsById() {
 		System.err.println(this.saleService.findGoodsDetailsById(1l));
+		Assert.assertNotNull(this.saleService.findGoodsDetailsById(1l));
 	}
 	
 	@Test
 	public void testfindGoodsStorageAndApply() {
 		System.err.println(this.saleService.findGoodsStorageApply(1L));
-		
+	}
+	
+	@Test
+	public void testfindGoodsStorageDetails() {
+		System.err.println(this.saleService.findGoodsStorageDetails(1l));
+	}
+	
+	@Test
+	public void testfindfindGoodsStorageDetails() {
+		System.err.println(this.saleService.findGoodsStorageDetails(1L));
+		Assert.assertNotNull(this.saleService.findGoodsStorageDetails(1L));
+	}
+	
+	@Test
+	public void testfindAllCustomerByCmid() {
+		System.err.println(this.saleService.findAllUnStorageGoods("cc"));
 	}
 }

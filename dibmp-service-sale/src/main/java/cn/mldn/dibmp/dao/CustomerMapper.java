@@ -31,4 +31,6 @@ public interface CustomerMapper {
 	 * @return 总页数
 	 */
 	public long getAllSplitCount(Map<String,Object> param);
+	
+	public List<Customer> findAllCustomerByCmid(Long cuid);
 }

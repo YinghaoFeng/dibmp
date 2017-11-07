@@ -37,6 +37,14 @@
 	      <result property="num" column="num"/>
 	</resultMap>
 	
+	<resultMap type="GoodsStorageDetails" id="goodsStorageDetailsMap">
+	      <result property="wid" column="wid"/>
+	      <result property="inmid" column="inmid"/>
+	      <result property="lastin" column="lastin"/>
+	      <result property="stornum" column="stornum"/>
+	       <result property="appmid" column="appmid"/>
+	</resultMap>
+	
 	<update id="doUpdate">
 	       update goods
 	       <set>
@@ -120,6 +128,19 @@
 	        sad.num
 	    from goods g 
 	        inner join storage_apply_details sad on g.gid = sad.gid
+	        inner join storage_apply sa on sa.said = sad.said
+	    where g.gid=#{gid}
+	</select>
+	
+	<select id="findGoodsStorageDetails" resultType="GoodsStorageDetails">
+	     select 
+	        sa.wid,
+	        sad.inmid,
+	        sa.appmid,
+	        g.lastin,
+	        g.stornum
+	    from goods g 
+	        inner join storage_record sad on g.gid = sad.gid
 	        inner join storage_apply sa on sa.said = sad.said
 	    where g.gid=#{gid}
 	</select>
