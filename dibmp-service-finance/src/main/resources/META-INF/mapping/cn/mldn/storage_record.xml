@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="cn.mldn.dibmp.dao.IStorageRecordDAO">
+  <insert id="doCreate" parameterType="StorageRecord">
+  	INSERT INTO storage_record(said,gid,name,num,price,weight,status,inmid)
+  	VALUES (#{said},#{gid},#{name},#{num},#{price},#{weight},#{status},#{inmid})
+  </insert>
+  
+  <select id="findAll" resultType="StorageRecord">
+  	SELECT srid,said,gid,name,num,price,weight,status,inmid
+  	FROM storage_record WHERE status=1;
+  </select>
+  
+  <select id="findSplit" parameterType="map" resultType="StorageRecord">
+  	SELECT srid,said,gid,name,num,price,weight,status,inmid
+  	FROM storage_record
+  	<where>
+  		<if test="column != null and keyWord != null">
+  			${column}LIKE #{keyWord} and
+  		</if>
+  			status=1
+  	</where>
+  			LIMIT #{startPage},#{lineSize};
+  </select>
+  
+  <select id="getCountSplit" parameterType="map" resultType="Long">
+  	SELECT COUNT(*) FROM storage_record
+  	<where>
+  		<choose>
+	  		<when test="column != null and keyWord != null">
+	  			${column}LIKE #{keyWord} and status=1
+	  		</when>
+	  		<otherwise>
+	  			status=1
+	  		</otherwise>
+  		</choose>
+  	</where>
+  
+  </select>
+</mapper>

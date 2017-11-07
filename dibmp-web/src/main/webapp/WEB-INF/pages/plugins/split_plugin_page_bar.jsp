@@ -13,7 +13,7 @@
 	request.setCharacterEncoding("UTF-8") ;
 %>
 <%
-	String handleUrl = null ; 
+	String handleUrl = null; 
 	String column = (String) request.getAttribute("column") ;
 	String keyWord = (String) request.getAttribute("keyWord") ;
 	long allRecorders = 0 ;
@@ -21,7 +21,11 @@
 	long allPages = 1 ;
 	int lineSize = 5 ;
 	try {
+<<<<<<< HEAD
 		handleUrl = application.getAttribute("basePath").toString() +  request.getAttribute("handleUrl") ;
+=======
+		handleUrl = application.getAttribute("basePath").toString() +request.getAttribute("handleUrl");
+>>>>>>> refs/remotes/origin/wt
 	} catch (Exception e) {}
 	try {
 		currentPage = (Long) request.getAttribute("currentPage") ;
