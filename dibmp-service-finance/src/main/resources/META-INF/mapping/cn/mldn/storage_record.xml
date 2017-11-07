@@ -8,6 +8,33 @@
   
   <select id="findAll" resultType="StorageRecord">
   	SELECT srid,said,gid,name,num,price,weight,status,inmid
+  	FROM storage_record WHERE status=1;
+  </select>
+  
+  <select id="findSplit" parameterType="map" resultType="StorageRecord">
+  	SELECT srid,said,gid,name,num,price,weight,status,inmid
   	FROM storage_record
+  	<where>
+  		<if test="column != null and keyWord != null">
+  			${column}LIKE #{keyWord} and
+  		</if>
+  			status=1
+  	</where>
+  			LIMIT #{startPage},#{lineSize};
+  </select>
+  
+  <select id="getCountSplit" parameterType="map" resultType="Long">
+  	SELECT COUNT(*) FROM storage_record
+  	<where>
+  		<choose>
+	  		<when test="column != null and keyWord != null">
+	  			${column}LIKE #{keyWord} and status=1
+	  		</when>
+	  		<otherwise>
+	  			status=1
+	  		</otherwise>
+  		</choose>
+  	</where>
+  
   </select>
 </mapper>

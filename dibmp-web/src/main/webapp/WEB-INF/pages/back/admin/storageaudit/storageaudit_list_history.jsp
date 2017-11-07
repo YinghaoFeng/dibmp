@@ -37,16 +37,18 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach items="${allRecord}" var="record">
 						<tr>
-							<th class="text-center" style="width:10%;">20001010</th> 
-							<td class="text-left"><span id="sid-1" style="cursor:pointer;">2017双十一衣帽入库</span></td>
+							<th class="text-center" style="width:10%;">${record.said}</th> 
+							<td class="text-left"><span id="sid-1" style="cursor:pointer;">${apply.title}</span></td>
 							<td class="text-left"><span id="wid-1" style="cursor:pointer;">北京通州仓库一号库</span></td>
 							<td class="text-center">2019-10-10</td>
-							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">老李</span></td>
-							<td class="text-center">100</td>
-							<td class="text-center">10000</td>
-							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">老张</span></td>
+							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${apply.appmid}</span></td>
+							<td class="text-center">${CountNum}</td>
+							<td class="text-center">${SumPrice}</td>
+							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${record.inmid}</span></td>
 						</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				<div id="splitBarDiv" style="float:right">

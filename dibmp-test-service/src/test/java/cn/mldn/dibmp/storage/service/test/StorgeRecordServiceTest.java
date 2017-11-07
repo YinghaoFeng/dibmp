@@ -32,7 +32,7 @@ public class StorgeRecordServiceTest {
 	}
 	@Test
 	public void rdListTest() {
-		System.err.println("列表显示 + " + RecordService.rdList());
+		System.err.println("列表显示 + " + RecordService.listRecord("title", "b", 2L, 5));
 		System.out.println("-=");
 	}
 	

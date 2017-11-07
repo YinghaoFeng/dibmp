@@ -36,7 +36,7 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		map.put("said", said);
 		return storagerApplyDAO.doEditStatus(map);
 	}
-	
+
 	@Override
 	public Map<String,Object> listSplitFont(String column, String keyWord, Long currentPage, Integer lineSize) {
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -49,12 +49,12 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		map.put("startPage",(currentPage-1)*lineSize);
 		map.put("lineSize", lineSize);
 		Map<String,Object> maps = new HashMap<String,Object>();
-		 List<StorageApply> apply = storagerApplyDAO.findSplit(map);
+		List<StorageApply> apply = storagerApplyDAO.findSplit(map);
 		Iterator<StorageApply> rs = apply.iterator();
-			if(rs.hasNext()) {
-				StorageApply sApply = rs.next(); 
-				map.put("CountNum", applyDetailsDAO.findCountNum(sApply.getSaid()));	  
-				map.put("SumPrice", applyDetailsDAO.findSumPrice(sApply.getSaid()));
+		if(rs.hasNext()) {
+			StorageApply sApply = rs.next(); 
+			maps.put("CountNum", applyDetailsDAO.findCountNum(sApply.getSaid()));	  
+			maps.put("SumPrice", applyDetailsDAO.findSumPrice(sApply.getSaid()));
 		}
 		maps.put("findSplit", apply);
 		maps.put("CountSplit", storagerApplyDAO.CountSplit(map));

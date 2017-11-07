@@ -8,6 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cn.mldn.dibmp.storage.service.IStorgeApplyDetailsService;
 import cn.mldn.dibmp.storage.service.IStorgeApplyService;
+import cn.mldn.dibmp.storage.service.IStorgeRecordService;
 import cn.mldn.util.action.abs.AbstractAction;
 import cn.mldn.util.web.SplitPageUtil;
 
@@ -17,6 +18,8 @@ public class StorageAuditActionBack extends AbstractAction {
 	private static final String TITLE = "入库审核" ;
 	@Resource
 	private IStorgeApplyService applyService;
+	@Resource
+	private IStorgeRecordService recordService;
 	@Resource
 	private IStorgeApplyDetailsService applyDetailsService;
 	@RequestMapping("list_prepare") 
@@ -40,6 +43,7 @@ public class StorageAuditActionBack extends AbstractAction {
 	public ModelAndView listMyself() {
 		SplitPageUtil spu = new SplitPageUtil("申请标题:title",super.getPage("storage.audit.list.history.action")) ;
 		ModelAndView mav = new ModelAndView(super.getPage("storage.audit.list.history.page"));
+		mav.addAllObjects(recordService.listRecord(spu.getColumn(), spu.getColumn(), spu.getCurrentPage(), spu.getLineSize()));
 		
 		return mav;
 	}

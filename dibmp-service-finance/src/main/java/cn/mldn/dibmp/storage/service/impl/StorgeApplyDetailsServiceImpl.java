@@ -31,19 +31,18 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 
 	@Override
 	public Map<String, Object> listGoodsBack(Long said) {
-		StorageApplyDetails applyDetails;
 		HashMap<String, Object> map = new HashMap<String,Object>();
-		 List<StorageApplyDetails> allGoogs = storageApplyDetailsDAO.findBySaid(said);
-		 Iterator<StorageApplyDetails> goods = allGoogs.iterator();
-		 if(goods.hasNext()) {
-			 applyDetails  = goods.next();
-			 applyDetails.getSadid();
-			map.put("SumNums", storageApplyDetailsDAO.findSumPrice(applyDetails.getSaid()));
+		List<StorageApplyDetails> allGoogs = storageApplyDetailsDAO.findBySaid(said);
+		Iterator<StorageApplyDetails> goods = allGoogs.iterator();
+		if(goods.hasNext()) {
+			StorageApplyDetails applyDetails = goods.next();
+			System.err.println("**** Sadid() 的值 **** " + applyDetails.getSadid());
 			map.put("SumNum", storageApplyDetailsDAO.findSumSadid(applyDetails.getSadid()));
 			map.put("allApply", storagerApplyDAO.findBySaid(applyDetails.getSadid()));
-		 }
-		 map.put("allApplyDetails", allGoogs);
-		 return map;
+		}
+		map.put("SumNums", storageApplyDetailsDAO.findSumPrice(said));
+		map.put("allApplyDetails", allGoogs);
+		return map;
 	}
-	
+
 }
