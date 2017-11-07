@@ -13,6 +13,7 @@ import cn.mldn.dibmp.dao.IStorageApplyDAO;
 import cn.mldn.dibmp.dao.IStorageApplyDetailsDAO;
 import cn.mldn.dibmp.service.abc.AbstractStirageService;
 import cn.mldn.dibmp.storage.service.IStorgeApplyDetailsService;
+import cn.mldn.dibmp.vo.StorageApply;
 import cn.mldn.dibmp.vo.StorageApplyDetails;
 @Service
 public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implements IStorgeApplyDetailsService{
@@ -34,13 +35,15 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 		HashMap<String, Object> map = new HashMap<String,Object>();
 		List<StorageApplyDetails> allGoogs = storageApplyDetailsDAO.findBySaid(said);
 		Iterator<StorageApplyDetails> goods = allGoogs.iterator();
-		if(goods.hasNext()) {
-			StorageApplyDetails applyDetails = goods.next();
-			System.err.println("**** Sadid() 的值 **** " + applyDetails.getSadid());
+		
+		while(goods.hasNext()) {
+			StorageApplyDetails applyDetails = new StorageApplyDetails();
+			applyDetails = goods.next();
 			map.put("SumNum", storageApplyDetailsDAO.findSumSadid(applyDetails.getSadid()));
-			map.put("allApply", storagerApplyDAO.findBySaid(applyDetails.getSadid()));
 		}
-		map.put("SumNums", storageApplyDetailsDAO.findSumPrice(said));
+		
+		map.put("allApply", storagerApplyDAO.findBySaid(said));
+		map.put("SumNums", storageApplyDetailsDAO.findSumPrice(said));//查询所有单价
 		map.put("allApplyDetails", allGoogs);
 		return map;
 	}

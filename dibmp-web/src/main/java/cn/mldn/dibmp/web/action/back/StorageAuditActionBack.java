@@ -26,15 +26,15 @@ public class StorageAuditActionBack extends AbstractAction {
 	public ModelAndView listDetails(HttpServletRequest request) {
 		SplitPageUtil spu = new SplitPageUtil("申请标题:title",super.getPage("storage.audit.list.prepare.action")) ;
 		//request.setAttribute("handleUrl",super.getPage("storage.audit.list.prepare.action"));
-		System.err.println("handleUrl--" + request.getAttribute("handleUrl"));
+		//System.err.println("handleUrl--" + request.getAttribute("handleUrl"));
 		ModelAndView mav = new ModelAndView(super.getPage("storage.audit.list.prepare.page"));
-		System.err.println("路径 ==== " + applyService.listSplitFont(spu.getColumn(), spu.getKeyWord(), spu.getCurrentPage(), spu.getLineSize()));
+		//System.err.println("路径 ==== " + applyService.listSplitFont(spu.getColumn(), spu.getKeyWord(), spu.getCurrentPage(), spu.getLineSize()));
 		mav.addAllObjects(applyService.listSplitFont(spu.getColumn(), spu.getKeyWord(), spu.getCurrentPage(), spu.getLineSize()));
 		return mav;
 	}
 	@RequestMapping("edit_pre") 
 	public ModelAndView editPre(Long sid) {
-		System.err.println("sid --" + sid);
+		System.err.println("said----" + sid);
 		ModelAndView mav = new ModelAndView(super.getPage("storage.audit.edit.page"));
 		mav.addAllObjects(applyDetailsService.listGoodsBack(sid));
 		return mav;
@@ -44,7 +44,6 @@ public class StorageAuditActionBack extends AbstractAction {
 		SplitPageUtil spu = new SplitPageUtil("申请标题:title",super.getPage("storage.audit.list.history.action")) ;
 		ModelAndView mav = new ModelAndView(super.getPage("storage.audit.list.history.page"));
 		mav.addAllObjects(recordService.listRecord(spu.getColumn(), spu.getColumn(), spu.getCurrentPage(), spu.getLineSize()));
-		
 		return mav;
 	}
 }
