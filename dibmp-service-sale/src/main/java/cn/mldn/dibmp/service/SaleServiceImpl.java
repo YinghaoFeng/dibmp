@@ -8,7 +8,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import cn.mldn.dibmp.dao.CitemMapper;
-import cn.mldn.dibmp.dao.CityMapper;
 import cn.mldn.dibmp.dao.CsourceMapper;
 import cn.mldn.dibmp.dao.CustomerMapper;
 import cn.mldn.dibmp.dao.GoodsMapper;
@@ -30,8 +29,6 @@ public class SaleServiceImpl extends AbstractService implements ISaleService {
     private CitemMapper citemMapper;
     @Resource
     private ProvinceMapper provinceMapper;
-    @Resource
-    private CityMapper cityMapper;
     @Resource
     private CsourceMapper csourceMapper;
     
@@ -58,7 +55,6 @@ public class SaleServiceImpl extends AbstractService implements ISaleService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("allCsource", this.csourceMapper.findAll());
 		map.put("allProvinces",this.provinceMapper.findAll());
-		map.put("allCitys",this.cityMapper.findAll());
 		map.put("allCitems", this.citemMapper.findAll());
 		return map;
 	}

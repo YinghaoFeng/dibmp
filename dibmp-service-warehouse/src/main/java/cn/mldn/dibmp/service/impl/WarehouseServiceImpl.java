@@ -37,9 +37,4 @@ public class WarehouseServiceImpl extends AbstractService implements IWarehouseS
 		return map ;
 	}
 
-	@Override
-	public List<Warehouse> listByWitem(long wiid) {
-		return warehouseDAO.findByWitem(wiid);
-	}
-
 }

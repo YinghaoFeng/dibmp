@@ -21,12 +21,6 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 	@Resource
 	private IStorageApplyDetailsDAO applyDetailsDAO;
 	@Override
-	public boolean add(StorageApply vo,String mid) {
-		vo.setStatus(0);//待提交
-		vo.setAppmid(mid);//申请人
-		return storagerApplyDAO.doCreate(vo);
-	}
-	@Override
 	public boolean updateStatus(Long said, Integer status) {
 		Map<String, Object> map = super.StringObjectMap();
 		if(said == null || status ==null) {

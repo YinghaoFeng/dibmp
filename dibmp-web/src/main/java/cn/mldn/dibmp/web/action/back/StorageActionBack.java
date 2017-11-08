@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.mldn.dibmp.ccc.service.ICityService;
+import cn.mldn.dibmp.ccc.service.IProvinceService;
+import cn.mldn.dibmp.ccc.service.IStorgeApplyService;
+import cn.mldn.dibmp.ccc.service.IWarehouseService;
 import cn.mldn.dibmp.ccc.service.IWitemService;
-import cn.mldn.dibmp.fyh.service.IWarehouseService;
-import cn.mldn.dibmp.storage.service.IStorgeApplyService;
 import cn.mldn.dibmp.vo.StorageApply;
-import cn.mldn.dibmp.yaojia.service.ISaleService;
 import cn.mldn.util.action.abs.AbstractAction;
 import cn.mldn.util.web.SplitPageUtil;
 
@@ -21,7 +21,7 @@ import cn.mldn.util.web.SplitPageUtil;
 public class StorageActionBack extends AbstractAction {
 	private static final String TITLE = "商品入库" ;
 	@Resource
-	private ISaleService saleService;
+	private IProvinceService provinceService;
 	@Resource
 	private ICityService cityService;
 	@Resource
@@ -34,7 +34,7 @@ public class StorageActionBack extends AbstractAction {
 	@RequestMapping("add_pre")
 	public ModelAndView addPre() {
 		ModelAndView mav = new ModelAndView(super.getPage("storage.add.page"));
-		mav.addAllObjects(saleService.getAddPre());
+		mav.addObject("allProvinces",provinceService.findAll());
 		mav.addObject("allWitem",witemService.list());
 		return mav;
 	}

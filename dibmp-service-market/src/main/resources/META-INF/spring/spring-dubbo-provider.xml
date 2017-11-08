@@ -15,11 +15,18 @@
 	<dubbo:provider timeout="${dubbo.provider.timeout}" /><!--远程服务调用超时时间(毫秒) -->
 	<!-- <dubbo:monitor address="${dubbo.monitor.address}" /> -->  <!-- 服务治理 监控中心 -->
 	<!-- <dubbo:monitor protocol="registry" /> -->
-	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IWitemService"
-		ref="witemServiceImpl" version="${dubbo.interface.version}" />
+	<bean id="storgeApplyServiceImpl" class="cn.mldn.dibmp.service.impl.StorageApplyServiceImpl"></bean>
+	<bean id="warehouseServiceImpl" class="cn.mldn.dibmp.service.impl.WarehouseServiceImpl"></bean>
+	<bean id="cityServiceImpl" class="cn.mldn.dibmp.service.impl.CityServiceImpl"></bean>
+	<bean id="provinceServiceImpl" class="cn.mldn.dibmp.service.impl.ProvinceServiceImpl"></bean>
+	<!-- 声明需要暴露的服务接口 --> 
+	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IWitemService" ref="witemServiceImpl" version="${dubbo.interface.version}" />
 	<dubbo:service interface="cn.mldn.dibmp.ccc.service.ISubtypeService" ref="subtypeServiceImpl" version="${dubbo.interface.version}" />
+	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IStorgeApplyService" ref="storgeApplyServiceImpl" version="${dubbo.interface.version}" />
+	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IWarehouseService" ref="warehouseServiceImpl" version="${dubbo.interface.version}" />
+	<dubbo:service interface="cn.mldn.dibmp.ccc.service.ICityService" ref="cityServiceImpl" version="${dubbo.interface.version}" />
 	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IGoodsService" ref="goodsServiceImpl" version="${dubbo.interface.version}" />
+	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IProvinceService" ref="provinceServiceImpl" version="${dubbo.interface.version}" />
 </beans>
 
 
