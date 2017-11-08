@@ -58,7 +58,6 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 			sApply = rs.next(); 
 			countMap.put(sApply.getSaid(),applyDetailsDAO.findCountNum(sApply.getSaid()));	  
 			sumMap.put(sApply.getSaid(),super.HandingBigDecimal(applyDetailsDAO.findSumPrice(sApply.getSaid())));
-			//sumMap.put(sApply.getSaid(),applyDetailsDAO.findSumPrice(sApply.getSaid()));
 		}
 		maps.put("findSplit",apply);	//商品信息
 		maps.put("CountNum",countMap);	//商品数量
@@ -66,4 +65,13 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		maps.put("CountSplit",storagerApplyDAO.CountSplit(map));
 		return maps;
 	}
+	@Override
+	public Map<String, Object> getWarehouseGoodsBySaid(Long said) {
+		Map<String, Object> map = super.StringObjectMap();
+		map.put("apply", storagerApplyDAO.findBySaid(said));
+		map.put("sum", super.HandingBigDecimal(applyDetailsDAO.findSumPrice(said))) ;
+		map.put("applyDetails", applyDetailsDAO.findBySaid(said));
+		return map;
+	}
+
 }

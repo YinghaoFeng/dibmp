@@ -24,6 +24,9 @@
 		ref="storgeApplyDetailsServiceImpl" version="${dubbo.interface.version}"/>
 	<dubbo:service interface="cn.mldn.dibmp.wt.service.IStorgeRecordService"
 		ref="storgeRecordServiceImpl" version="${dubbo.interface.version}"/>
+	<dubbo:service interface="cn.mldn.dibmp.wt.service.IStorgeInputService"
+		ref="storgeInputServiceImpl" version="${dubbo.interface.version}"/>
+		
 </beans>
 
 

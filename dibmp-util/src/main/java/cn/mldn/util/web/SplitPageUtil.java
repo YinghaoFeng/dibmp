@@ -24,7 +24,6 @@ public class SplitPageUtil {
 	public SplitPageUtil(String columnData,String handleUrlKey) {
 		this.request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest() ;
 		this.request.setAttribute("columnData", columnData);
-		System.err.println("handleUrlKey---"+handleUrlKey);
 		this.request.setAttribute("handleUrl", handleUrlKey); 
 		try {	// 这行代码出错只有不传递或传递非法参数的时候出现
 			this.currentPage = Long.parseLong(this.request.getParameter("cp")) ;

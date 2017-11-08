@@ -42,7 +42,6 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 		HashMap<String, Object> map = new HashMap<String,Object>();
 		map.put("allApply", storagerApplyDAO.findBySaid(said));
 		map.put("SumNums", super.HandingBigDecimal(storageApplyDetailsDAO.findSumPrice(said)));//查询所有单价
-//		map.put("SumNums", storageApplyDetailsDAO.findSumPrice(said));//查询所有单价
 		return map;
 	}
 	@Override
@@ -52,4 +51,6 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 		 map.put("allApplyDetails", allGoogs);
 		 return map;
 	}
+	
+	
 }

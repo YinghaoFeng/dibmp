@@ -44,7 +44,7 @@
 						<tr>
 							<th class="text-center" style="width:10%;">${apply.said}</th> 
 							<td class="text-left"><span id="sid-${apply.said}" style="cursor:pointer;">${apply.title}</span></td>
-							<td class="text-left"><span id="wid-${apply.said}" style="cursor:pointer;">${apply.pid} ${apply.cid}仓库一号库</span></td>
+							<td class="text-left"><span id="wid-${apply.wid}" style="cursor:pointer;">${apply.wid}</span></td>
 							<td class="text-center">2019-10-09</td>
 							<td class="text-center"><span id="mid-${apply.appmid}" style="cursor:pointer;">${apply.appmid}</span></td>
 							<td class="text-center">${CountNum[apply.said]}</td>

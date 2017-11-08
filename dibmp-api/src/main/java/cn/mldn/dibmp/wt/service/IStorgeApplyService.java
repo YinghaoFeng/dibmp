@@ -25,6 +25,7 @@ public interface IStorgeApplyService {
 	 * @return  申请成功返回true否则返回false
 	 */
 	public boolean updateStatus(Long said,Integer status); 
+	
 	/**
 	 *  显示所有的待审核清单的数据显示
 	 *
@@ -41,5 +42,10 @@ public interface IStorgeApplyService {
 	 * @return
 	 */
 	public Map<String, Object> listSplitFont(String column,String keyWord,Long currentPage,Integer lineSize);
-
+	/**
+	 * 根据said 仓库的编号获取的到每一个仓库所对应的商品个数
+	 * @param said 当前仓库的编号
+	 * @return
+	 */
+	public Map<String, Object> getWarehouseGoodsBySaid(Long said);
 }

@@ -41,7 +41,7 @@ public interface IStorageApplyDAO {
 	public Long CountSplit(Map<String,Object> map);
 	/**
 	 * 
-	 * 通过said查询出所有的申请表中的信息
+	 * 通过said查询出所有的仓库申请表中的信息，里面存储了仓库的信息
 	 * @param said  待审核表的编号
 	 * @return
 	 */

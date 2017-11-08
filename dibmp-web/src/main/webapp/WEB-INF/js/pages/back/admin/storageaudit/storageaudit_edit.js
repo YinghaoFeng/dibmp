@@ -50,7 +50,6 @@ $(function(){
 		$.post("pages/back/admin/storageaudit/edit_num.action",{"said":sid},function(data){
 			console.log(data) ;
 			apply = data.allApplyDetails ;
-			
 			for(x = 0 ; x < apply.length; x ++){
 				var row ="<tr class='text-primary'>"+
 				"<td class='text-center' id='gid-"+apply[x].gid+"'>"+apply[x].gid+"</td>"+
