@@ -1,4 +1,4 @@
-package cn.mldn.dibmp.storage.service.test;
+package cn.mldn.dibmp.wt.service.test;
 
 import java.util.Map;
 
@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.mldn.dibmp.storage.service.IStorgeApplyService;
 import cn.mldn.dibmp.vo.StorageApply;
+import cn.mldn.dibmp.wt.service.IStorgeApplyService;
 import junit.framework.TestCase;
 
 @ContextConfiguration(locations = {"classpath:spring/spring-*.xml"})
@@ -46,6 +46,7 @@ public class StorageApplyServiceText {
 		 Map<String, Object> as = applyService.listSplitFont("title","",1L,5);
 		System.err.println("分页显示 findSplit + " + as.get("findSplit"));
 		System.err.println("分页显示 CountSplit + " + as.get("CountSplit"));
+		System.err.println("分页显示 CountSplit + " + as.get("SumPrice"));
 		
 	}
 }

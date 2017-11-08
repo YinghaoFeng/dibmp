@@ -65,11 +65,11 @@
 									<label class="col-md-3 control-label" for="destination">审核结论：</label>
 									<div class="col-md-5">
 										<div class="radio-inline">
-											<label><input type="radio" id="audit" value="2"
+											<label><input type="radio" id="audit" name="audit" value="3"
 												checked> &nbsp;<span class="text-danger">拒绝</span></label>
 										</div>
 										<div class="radio-inline">
-											<label><input type="radio" id="audit" value="1">
+											<label><input type="radio" id="audit" name="audit" value="5">
 												&nbsp;<span class="text-success">通过</span></label>
 										</div>
 									</div>
@@ -90,7 +90,8 @@
 								</div>
 								<div class="form-group">
 									<div class="col-md-5 col-md-offset-3">
-										<button type="submit" class="btn btn-primary">增加</button>
+										<input  type="hidden" id="said" name="said" value="${allApply.said}">
+										<button type="submit" class="btn btn-primary" id="buttonadd">增加</button>
 										<button type="reset" class="btn btn-warning">重置</button>
 									</div>
 								</div>
@@ -100,7 +101,7 @@
 					<div class="panel-group" id="news">
 						<div class="panel panel-info">
 							<div class="panel-heading">
-								<h4 class="panel-title">
+								<h4 class="panel-title" >
 									<a data-toggle="collapse" data-parent="news" href="#contentOne">
 										<strong><span class="glyphicon glyphicon-user"></span>&nbsp;入库商品清单：</strong>
 									</a>
@@ -119,17 +120,8 @@
 												<th class="text-center" style="width: 10%;">总价（￥）</th>
 											</tr>
 										</thead>
-										<tbody>
-											<c:forEach items="${allApplyDetails}" var="ApplyDetails">
-												<tr class="text-primary">
-													<td class="text-center">${ApplyDetails.gid}</td>
-													<td class="text-left">${ApplyDetails.name}</td>
-													<td class="text-center">${ApplyDetails.num}</td>
-													<td class="text-center">${ApplyDetails.price}</td>
-													<td class="text-center">${ApplyDetails.weight}</td>
-													<td class="text-center">${SumNum}</td>
-												</tr>
-											</c:forEach>
+										<tbody id="tbody">
+											
 										</tbody>
 									</table>
 								</div>

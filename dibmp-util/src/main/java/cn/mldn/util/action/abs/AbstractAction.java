@@ -1,17 +1,21 @@
 package cn.mldn.util.action.abs;
 
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.MessageSource;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import cn.mldn.util.web.ServletObjectUtil;
 
 public abstract class AbstractAction {
 	@Resource
@@ -74,6 +78,15 @@ public abstract class AbstractAction {
 	public HttpServletRequest getRequest() {
 		return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest() ;
 	} 
+	
+	public void print(Object obj)   {
+		try {
+			ServletObjectUtil.getResponse().getWriter().println(obj);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * 该方法的主要功能是根据指定的key获得资源文件中对应的内容
 	 * @param key 要执行的跳转路径key

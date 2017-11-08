@@ -31,4 +31,6 @@ public interface IStorageRecordDAO {
 	 * @return
 	 */
 	public Long getCountSplit(Map<String, Object> map);
+	
+
 }

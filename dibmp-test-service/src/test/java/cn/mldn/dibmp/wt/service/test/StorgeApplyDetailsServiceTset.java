@@ -1,14 +1,17 @@
-package cn.mldn.dibmp.storage.service.test;
+package cn.mldn.dibmp.wt.service.test;
+
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.mldn.dibmp.storage.service.IStorgeApplyDetailsService;
 import cn.mldn.dibmp.vo.StorageApplyDetails;
+import cn.mldn.dibmp.wt.service.IStorgeApplyDetailsService;
 import junit.framework.TestCase;
 
 @ContextConfiguration(locations = {"classpath:spring/spring-*.xml"})
@@ -34,5 +37,10 @@ public class StorgeApplyDetailsServiceTset {
 		System.err.println("查询内容 ++ " + detailsService.findBySadid(2L));
 		System.out.println("************");
 	}
-
+	@Test
+	public void listGoodsBackText() {
+	 Map<String, Object> map = detailsService.listGoodsBack(2L);
+		System.err.println("当前数据的结果" + map.get("SumNums"));
+		
+	}
 }

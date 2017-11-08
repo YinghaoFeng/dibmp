@@ -1,4 +1,4 @@
-package cn.mldn.dibmp.storage.service.test;
+package cn.mldn.dibmp.wt.service.test;
 
 import javax.annotation.Resource;
 
@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import cn.mldn.dibmp.storage.service.IStorgeRecordService;
 import cn.mldn.dibmp.vo.StorageRecord;
+import cn.mldn.dibmp.wt.service.IStorgeRecordService;
 import junit.framework.TestCase;
 @ContextConfiguration(locations = {"classpath:spring/spring-*.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)

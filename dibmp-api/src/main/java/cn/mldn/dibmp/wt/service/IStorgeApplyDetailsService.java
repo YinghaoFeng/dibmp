@@ -1,4 +1,4 @@
-package cn.mldn.dibmp.storage.service;
+package cn.mldn.dibmp.wt.service;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +15,13 @@ public interface IStorgeApplyDetailsService {
 	 * @return 添加成功返回true否则返回fasle 
 	 */
 	public boolean add(StorageApplyDetails vo);
+	
+	/**
+	 * 根据库存编号更新商品的状态
+	 * @param said  库存编号
+	 * @return
+	 */
+	public boolean editSaid(Long said,Integer status);
 	/**
 	 * 根据编号查询当前的商品详细信息
 	 * @param sadid 当前商品编号
@@ -32,4 +39,11 @@ public interface IStorgeApplyDetailsService {
 	 * @return 商品信息
 	 */
 	public Map<String, Object> listGoodsBack(Long said);
+	/**
+	 * 查询审核中商品的信息
+	 * @param said  要查询的商品编号
+	 * @return
+	 */
+	public Map<String, Object> listEditNum(Long said);
+	
 }

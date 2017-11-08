@@ -1,4 +1,4 @@
-package cn.mldn.dibmp.storage.service;
+package cn.mldn.dibmp.wt.service;
 
 import java.util.List;
 import java.util.Map;

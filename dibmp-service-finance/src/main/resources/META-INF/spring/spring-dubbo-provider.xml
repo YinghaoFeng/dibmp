@@ -18,11 +18,11 @@
 	<!-- <dubbo:monitor address="${dubbo.monitor.address}"  /> -->  <!-- 服务治理 监控中心 -->
 	<!-- <dubbo:monitor protocol="registry" /> --> 
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="cn.mldn.dibmp.storage.service.IStorgeApplyService"
+	<dubbo:service interface="cn.mldn.dibmp.wt.service.IStorgeApplyService"
 		ref="storgeApplyServiceImpl" version="${dubbo.interface.version}" />
-	<dubbo:service interface="cn.mldn.dibmp.storage.service.IStorgeApplyDetailsService"
+	<dubbo:service interface="cn.mldn.dibmp.wt.service.IStorgeApplyDetailsService"
 		ref="storgeApplyDetailsServiceImpl" version="${dubbo.interface.version}"/>
-	<dubbo:service interface="cn.mldn.dibmp.storage.service.IStorgeRecordService"
+	<dubbo:service interface="cn.mldn.dibmp.wt.service.IStorgeRecordService"
 		ref="storgeRecordServiceImpl" version="${dubbo.interface.version}"/>
 </beans>
 

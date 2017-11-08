@@ -1,14 +1,15 @@
 package cn.mldn.dibmp.web.action.back;
+
+import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
-import cn.mldn.dibmp.storage.service.IStorgeApplyDetailsService;
-import cn.mldn.dibmp.storage.service.IStorgeApplyService;
-import cn.mldn.dibmp.storage.service.IStorgeRecordService;
+import cn.mldn.dibmp.wt.service.IStorgeApplyDetailsService;
+import cn.mldn.dibmp.wt.service.IStorgeApplyService;
+import cn.mldn.dibmp.wt.service.IStorgeRecordService;
 import cn.mldn.util.action.abs.AbstractAction;
 import cn.mldn.util.web.SplitPageUtil;
 
@@ -34,9 +35,10 @@ public class StorageAuditActionBack extends AbstractAction {
 	}
 	@RequestMapping("edit_pre") 
 	public ModelAndView editPre(Long sid) {
-		System.err.println("said----" + sid);
+//		System.err.println("said----" + sid);
 		ModelAndView mav = new ModelAndView(super.getPage("storage.audit.edit.page"));
-		mav.addAllObjects(applyDetailsService.listGoodsBack(sid));
+		Map<String, Object> map = applyDetailsService.listGoodsBack(sid);
+		mav.addAllObjects(map);
 		return mav;
 	}
 	@RequestMapping("list_history") 
@@ -45,5 +47,33 @@ public class StorageAuditActionBack extends AbstractAction {
 		ModelAndView mav = new ModelAndView(super.getPage("storage.audit.list.history.page"));
 		mav.addAllObjects(recordService.listRecord(spu.getColumn(), spu.getColumn(), spu.getCurrentPage(), spu.getLineSize()));
 		return mav;
+	}
+	@RequestMapping("edit")
+	public ModelAndView editRecord() {
+		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
+		Integer auditInt =Integer.parseInt(super.getRequest().getParameter("audit"));
+		Long said = Long.parseLong(super.getRequest().getParameter("said"));
+		System.err.println("audit--" + auditInt);
+		System.err.println("said --" + said);
+		if(auditInt ==5) { //通过
+			if(applyDetailsService.editSaid(said,auditInt)) {
+				super.setMsgAndUrl(mav, "storage.audit.list.prepare.action", "vo.editpass.success", TITLE); 		
+			}
+		}else if( auditInt ==3) {//拒绝
+			if(applyDetailsService.editSaid(said,auditInt)) {
+				super.setMsgAndUrl(mav, "storage.audit.list.prepare.action", "vo.editpass.failure", TITLE); 		
+			}
+		}else {
+			super.setMsgAndUrl(mav, "storage.audit.list.prepare.action", "vo.editpass.failure", TITLE); 
+		}
+		return mav;
+	}
+	
+	@ResponseBody
+	@RequestMapping("edit_num")
+	public Object editNum() {
+		String said = super.getRequest().getParameter("said");
+		Map<String, Object> nums = applyDetailsService.listEditNum(Long.parseLong(said));
+		return nums;
 	}
 }

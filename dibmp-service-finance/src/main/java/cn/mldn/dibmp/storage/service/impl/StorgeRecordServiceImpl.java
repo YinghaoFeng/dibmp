@@ -13,9 +13,9 @@ import cn.mldn.dibmp.dao.IStorageApplyDAO;
 import cn.mldn.dibmp.dao.IStorageApplyDetailsDAO;
 import cn.mldn.dibmp.dao.IStorageRecordDAO;
 import cn.mldn.dibmp.service.abc.AbstractStirageService;
-import cn.mldn.dibmp.storage.service.IStorgeRecordService;
 import cn.mldn.dibmp.vo.StorageApply;
 import cn.mldn.dibmp.vo.StorageRecord;
+import cn.mldn.dibmp.wt.service.IStorgeRecordService;
 @Service
 public class StorgeRecordServiceImpl extends AbstractStirageService implements IStorgeRecordService {
 	@Resource
@@ -26,9 +26,15 @@ public class StorgeRecordServiceImpl extends AbstractStirageService implements I
 	private IStorageApplyDetailsDAO applyDetailsDAO;
 	@Override
 	public boolean add(StorageRecord vo) {
-		return storageRecordDAO.doCreate(vo);
+		if(storageRecordDAO.doCreate(vo)) {
+			 Map<String, Object> map = super.StringObjectMap();
+			 map.put("said", vo.getSaid());
+			 map.put("status", 1);
+			return applyDAO.doEditStatus(map);
+		}
+		return false;
 	}
-
+	
 	@Override
 	public Map<String, Object> listRecord(String column,String keyWord,Long currentPage,Integer lineSize) {
 		HashMap<String, Object> map = new HashMap<String,Object>();
@@ -46,7 +52,7 @@ public class StorgeRecordServiceImpl extends AbstractStirageService implements I
 		if(recordIter.hasNext()) {
 			 StorageRecord renext = recordIter.next();
 			 maps.put("apply", applyDAO.findBySaid(renext.getSaid()));
-			 maps.put("SumPrice", applyDetailsDAO.findSumPrice(renext.getSaid()));
+			 maps.put("SumPrice", super.HandingBigDecimal(applyDetailsDAO.findSumPrice(renext.getSaid())));
 			 maps.put("CountNum", applyDetailsDAO.findCountNum(renext.getSaid()));
 		}
 		maps.put("allRecord", recordList);

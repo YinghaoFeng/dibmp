@@ -16,7 +16,7 @@
 			<if test="column != null and keyWord != null">
 				${column} LIKE #{keyWord} and
 			</if>
-			status=0
+			status=1
 		</where>
 			  LIMIT #{startPage},#{lineSize};
 	</select>
@@ -26,10 +26,10 @@
 		<where>
 			<choose>
 				<when test="column !=null and keyWord !=null">
-					${column} LIKE #{keyWord} and status=0
+					${column} LIKE #{keyWord} and status=1
 				</when>
 				<otherwise>
-					status=0
+					status=1
 				</otherwise>
 			</choose>
 		</where>
@@ -37,12 +37,12 @@
 	
 	<select id="findAll" resultType="StorageApply">
 		SELECT said,title,pid,cid,wiid,wid,note,status,appmid
-		FROM storage_apply WHERE status=0;
+		FROM storage_apply WHERE status=1;
 	</select>
 	
 	<select id="findBySaid" parameterType="Long" resultType="StorageApply">
 		SELECT said,title,pid,cid,wiid,wid,note,status,appmid
-		FROM storage_apply WHERE said=#{said} and status=0;
+		FROM storage_apply WHERE said=#{said} and status=1;
 	</select>
 	
 </mapper>

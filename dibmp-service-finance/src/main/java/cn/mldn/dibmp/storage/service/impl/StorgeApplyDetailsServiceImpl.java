@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import cn.mldn.dibmp.dao.IStorageApplyDAO;
 import cn.mldn.dibmp.dao.IStorageApplyDetailsDAO;
 import cn.mldn.dibmp.service.abc.AbstractStirageService;
-import cn.mldn.dibmp.storage.service.IStorgeApplyDetailsService;
 import cn.mldn.dibmp.vo.StorageApply;
 import cn.mldn.dibmp.vo.StorageApplyDetails;
+import cn.mldn.dibmp.wt.service.IStorgeApplyDetailsService;
 @Service
 public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implements IStorgeApplyDetailsService{
 	@Resource
@@ -26,6 +26,13 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 		return storageApplyDetailsDAO.doCreate(vo);
 	}
 	@Override
+	public boolean editSaid(Long said,Integer status) {
+		HashMap<String, Object> map = new HashMap<String,Object>();
+		map.put("status", status);
+		map.put("said", said);
+		return storagerApplyDAO.doEditStatus(map);
+	}
+	@Override
 	public List<StorageApplyDetails> findBySadid(Long sadid) {
 		return storageApplyDetailsDAO.findBySaid(sadid);
 	}
@@ -33,19 +40,16 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 	@Override
 	public Map<String, Object> listGoodsBack(Long said) {
 		HashMap<String, Object> map = new HashMap<String,Object>();
-		List<StorageApplyDetails> allGoogs = storageApplyDetailsDAO.findBySaid(said);
-		Iterator<StorageApplyDetails> goods = allGoogs.iterator();
-		
-		while(goods.hasNext()) {
-			StorageApplyDetails applyDetails = new StorageApplyDetails();
-			applyDetails = goods.next();
-			map.put("SumNum", storageApplyDetailsDAO.findSumSadid(applyDetails.getSadid()));
-		}
-		
 		map.put("allApply", storagerApplyDAO.findBySaid(said));
-		map.put("SumNums", storageApplyDetailsDAO.findSumPrice(said));//查询所有单价
-		map.put("allApplyDetails", allGoogs);
+		map.put("SumNums", super.HandingBigDecimal(storageApplyDetailsDAO.findSumPrice(said)));//查询所有单价
+//		map.put("SumNums", storageApplyDetailsDAO.findSumPrice(said));//查询所有单价
 		return map;
 	}
-
+	@Override
+	public Map<String, Object> listEditNum(Long said) {
+		 Map<String, Object> map = super.StringObjectMap();
+		 List<StorageApplyDetails> allGoogs = storageApplyDetailsDAO.findBySaid(said);
+		 map.put("allApplyDetails", allGoogs);
+		 return map;
+	}
 }

@@ -8,7 +8,7 @@
   
   <select id="findAll" resultType="StorageRecord">
   	SELECT srid,said,gid,name,num,price,weight,status,inmid
-  	FROM storage_record WHERE status=1;
+  	FROM storage_record WHERE status=5;
   </select>
   
   <select id="findSplit" parameterType="map" resultType="StorageRecord">
@@ -18,7 +18,7 @@
   		<if test="column != null and keyWord != null">
   			${column}LIKE #{keyWord} and
   		</if>
-  			status=1
+  			status=5
   	</where>
   			LIMIT #{startPage},#{lineSize};
   </select>
@@ -31,7 +31,7 @@
 	  			${column}LIKE #{keyWord} and status=1
 	  		</when>
 	  		<otherwise>
-	  			status=1
+	  			status=5
 	  		</otherwise>
   		</choose>
   	</where>

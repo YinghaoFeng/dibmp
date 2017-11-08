@@ -41,10 +41,10 @@
 						<tr>
 							<th class="text-center" style="width:10%;">${record.said}</th> 
 							<td class="text-left"><span id="sid-1" style="cursor:pointer;">${apply.title}</span></td>
-							<td class="text-left"><span id="wid-1" style="cursor:pointer;">北京通州仓库一号库</span></td>
+							<td class="text-left"><span id="wid-1" style="cursor:pointer;">${apply.pid} ${apply.cid}通州仓库一号库</span></td>
 							<td class="text-center">2019-10-10</td>
 							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${apply.appmid}</span></td>
-							<td class="text-center">${CountNum}</td>
+							<td class="text-center">${record.num}</td>
 							<td class="text-center">${SumPrice}</td>
 							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${record.inmid}</span></td>
 						</tr>
