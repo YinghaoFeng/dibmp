@@ -2,18 +2,7 @@ $(function(){
 	$("span[id^=mid-]").each(function(){
 		$(this).on("click",function(){
 			mid = this.id.split("-")[1] ;
-			$("#memberInfo").modal("toggle") ;
-//			$.post("pages/back/admin/storageaudit/stock_to.action",{"mid":mid},function(data){
-//				
-//				$("#names").html();
-//				$("#addressl").html();
-//				$("#wiidl").html();
-//				$("#max").html();
-//				$("#nums").html();
-//				$("#notes").html();
-//				
-//			});
-			
+			$("#memberInfo").modal("toggle") ;			
 		}) ;
 	}) ;
 	$("span[id^=sid-]").each(function(){
@@ -30,6 +19,8 @@ $(function(){
 				
 				console.log(data.applyDetails[0].sadid)
 				 apply= data.applyDetails;
+				var shop = $("#shop");
+				shop.empty();
 				for(a=0;a<apply.length;a++){
 					var rw="<tr class='text-primary'>" +
 							"<td class='text-center'>"+apply[a].sadid+"</td>"+
@@ -37,9 +28,10 @@ $(function(){
 								"<td class='text-center'>"+apply[a].num+"</td>"+
 								"<td class='text-center'>"+apply[a].price+"</td>"+
 								"<td class='text-center'>"+apply[a].weight+"</td>"+
-								"<td class='text-center'>"+(apply[a].price*apply.num)+"</td>"+
+								"<td class='text-center'>"+(apply[a].price*apply[a].num).toFixed(2)+"</td>"+
 							"</tr>" ;
-					$("#shop").append($(rw));
+					shop.append($(rw));
+
 				}
 			})
 		}) ;

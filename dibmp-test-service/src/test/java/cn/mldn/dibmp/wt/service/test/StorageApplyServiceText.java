@@ -49,4 +49,11 @@ public class StorageApplyServiceText {
 		System.err.println("分页显示 CountSplit + " + as.get("SumPrice"));
 		
 	}
+	@Test
+	public void getWarehouseGoodsBySaidText() {
+		 Map<String, Object> nn =  applyService.getWarehouseGoodsBySaid(1L);
+		  System.err.println("当前总量" +nn.get("sum"));
+		  System.err.println("当前apply对象" +nn.get("apply"));
+		 
+	}
 }

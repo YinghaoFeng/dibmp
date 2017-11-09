@@ -48,6 +48,7 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		}
 		map.put("startPage",(currentPage-1)*lineSize);
 		map.put("lineSize", lineSize);
+		map.put("status", 1);
 		Map<String,Object> maps = new HashMap<String,Object>();
 		Map<Long, Object> sumMap = super.LongObjectMap();
 		Map<Long, Object> countMap = super.LongObjectMap();
@@ -57,12 +58,17 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 			StorageApply sApply = new StorageApply();
 			sApply = rs.next(); 
 			countMap.put(sApply.getSaid(),applyDetailsDAO.findCountNum(sApply.getSaid()));	  
-			sumMap.put(sApply.getSaid(),super.HandingBigDecimal(applyDetailsDAO.findSumPrice(sApply.getSaid())));
+			if(applyDetailsDAO.findSumPrice(sApply.getSaid()) != null) {
+				sumMap.put(sApply.getSaid(),super.HandingBigDecimal(applyDetailsDAO.findSumPrice(sApply.getSaid())));
+			}else {
+				sumMap.put(sApply.getSaid(),0);
+			}
+			
 		}
 		maps.put("findSplit",apply);	//商品信息
 		maps.put("CountNum",countMap);	//商品数量
 		maps.put("SumPrice",sumMap);	//商品价格
-		maps.put("CountSplit",storagerApplyDAO.CountSplit(map));
+		maps.put("allRecorders",storagerApplyDAO.CountSplit(map));
 		return maps;
 	}
 	@Override

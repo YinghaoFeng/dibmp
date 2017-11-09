@@ -37,26 +37,36 @@ public class StorgeRecordServiceImpl extends AbstractStirageService implements I
 	
 	@Override
 	public Map<String, Object> listRecord(String column,String keyWord,Long currentPage,Integer lineSize) {
-		HashMap<String, Object> map = new HashMap<String,Object>();
+		Map<String,Object> map = super.StringObjectMap();
 		if(super.isEmptyString(column, keyWord)) {
-			map.put("keyWord", null);
+			map.put("column",null);
 		}else {
-			map.put("column", column);
-			map.put("keyWord", "%"+keyWord+"%");
+			map.put("column",column);
+			map.put("keyWord","%"+keyWord+"%");
 		}
-			map.put("startPage", (currentPage-1)*lineSize);
-			map.put("lineSize", lineSize);
-		List<StorageRecord> recordList = storageRecordDAO.findSplit(map);
-		Iterator<StorageRecord> recordIter = recordList.iterator();
-		HashMap<String, Object> maps = new HashMap<String,Object>();
-		if(recordIter.hasNext()) {
-			 StorageRecord renext = recordIter.next();
-			 maps.put("apply", applyDAO.findBySaid(renext.getSaid()));
-			 maps.put("SumPrice", super.HandingBigDecimal(applyDetailsDAO.findSumPrice(renext.getSaid())));
-			 maps.put("CountNum", applyDetailsDAO.findCountNum(renext.getSaid()));
+		map.put("startPage",(currentPage-1)*lineSize);
+		map.put("lineSize", lineSize);
+		map.put("status", 5);
+		Map<String,Object> maps = new HashMap<String,Object>();
+		Map<Long, Object> sumMap = super.LongObjectMap();
+		Map<Long, Object> countMap = super.LongObjectMap();
+		List<StorageApply> apply = applyDAO.findSplit(map);
+		Iterator<StorageApply> rs = apply.iterator();
+		while(rs.hasNext()){
+			StorageApply sApply = new StorageApply();
+			sApply = rs.next(); 
+			countMap.put(sApply.getSaid(),applyDetailsDAO.findCountNum(sApply.getSaid()));	  
+			if(applyDetailsDAO.findSumPrice(sApply.getSaid())!=null) {
+				sumMap.put(sApply.getSaid(),super.HandingBigDecimal(applyDetailsDAO.findSumPrice(sApply.getSaid())));
+			}else {
+				sumMap.put(sApply.getSaid(),0);
+			}
 		}
-		maps.put("allRecord", recordList);
-		maps.put("CountRecord", storageRecordDAO.getCountSplit(map));
+		maps.put("findSplit",apply);	//商品信息
+		maps.put("CountNum",countMap);	//商品数量
+		maps.put("SumPrice",sumMap);	//商品价格
+		maps.put("allRecorders",applyDAO.CountSplit(map));
+		 
 		return maps;
 	}
 

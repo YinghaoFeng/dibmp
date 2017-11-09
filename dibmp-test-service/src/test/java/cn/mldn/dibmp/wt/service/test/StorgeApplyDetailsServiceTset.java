@@ -43,4 +43,10 @@ public class StorgeApplyDetailsServiceTset {
 		System.err.println("当前数据的结果" + map.get("SumNums"));
 		
 	}
+	@Test
+	public void editSaidText() {
+		 boolean boog = detailsService.editSaid(2L, 5, "2016-8-9", "java");
+		 System.err.println("更新数据++" + boog);
+		 TestCase.assertTrue(boog);
+	}
 }

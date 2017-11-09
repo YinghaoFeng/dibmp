@@ -26,10 +26,13 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 		return storageApplyDetailsDAO.doCreate(vo);
 	}
 	@Override
-	public boolean editSaid(Long said,Integer status) {
+	public boolean editSaid(Long said,Integer status,String autime,String auname) {
 		HashMap<String, Object> map = new HashMap<String,Object>();
 		map.put("status", status);
 		map.put("said", said);
+		map.put("autime", autime);
+		map.put("auname", auname);
+		System.err.println(auname);
 		return storagerApplyDAO.doEditStatus(map);
 	}
 	@Override

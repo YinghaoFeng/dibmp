@@ -37,16 +37,18 @@
 						</tr>
 					</thead>
 					<tbody>
-					<c:forEach items="${allRecord}" var="record">
+					<c:forEach items="${findSplit}" var="record">
 						<tr>
 							<th class="text-center" style="width:10%;">${record.said}</th> 
-							<td class="text-left"><span id="sid-1" style="cursor:pointer;">${apply.title}</span></td>
-							<td class="text-left"><span id="wid-1" style="cursor:pointer;">${apply.pid} ${apply.cid}通州仓库一号库</span></td>
-							<td class="text-center">2019-10-10</td>
-							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${apply.appmid}</span></td>
-							<td class="text-center">${record.num}</td>
-							<td class="text-center">${SumPrice}</td>
-							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${record.inmid}</span></td>
+							<td class="text-left"><span id="sid-1" style="cursor:pointer;">${record.title}</span></td>
+							<td class="text-left"><span id="wid-1" style="cursor:pointer;">${record.wid}一号库</span></td>
+							<td class="text-center">
+								<fmt:formatDate value="${record.autime}" pattern="yyyy-MM-dd"/>
+							</td>
+							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${record.appmid}</span></td>
+							<td class="text-center">${CountNum[record.said]}</td>
+							<td class="text-center">${SumPrice[record.said]}</td>
+							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${record.auname}</span></td>
 						</tr>
 						</c:forEach>
 					</tbody>

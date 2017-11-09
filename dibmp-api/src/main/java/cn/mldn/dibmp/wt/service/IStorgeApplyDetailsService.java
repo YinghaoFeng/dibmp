@@ -17,11 +17,14 @@ public interface IStorgeApplyDetailsService {
 	public boolean add(StorageApplyDetails vo);
 	
 	/**
-	 * 根据库存编号更新商品的状态
-	 * @param said  库存编号
-	 * @return
+	 * 更新当前用户的申请单的状态，1 未 未审核，5为审核通过 3为 审核失败
+	 * @param said  当前仓库名称
+	 * @param status 修改的状态
+	 * @param autime 审核日期
+	 * @param auname 审核人
+	 * @return 成功返回true 否则返回会false
 	 */
-	public boolean editSaid(Long said,Integer status);
+	public boolean editSaid(Long said,Integer status,String autime,String auname);
 	/**
 	 * 根据编号查询当前的商品详细信息
 	 * @param sadid 当前商品编号

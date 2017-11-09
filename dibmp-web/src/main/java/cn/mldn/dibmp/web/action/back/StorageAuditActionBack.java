@@ -1,8 +1,12 @@
 package cn.mldn.dibmp.web.action.back;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -47,16 +51,18 @@ public class StorageAuditActionBack extends AbstractAction {
 	@RequestMapping("edit")
 	public ModelAndView editRecord() {
 		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
-		Integer auditInt =Integer.parseInt(super.getRequest().getParameter("audit"));
+		Integer status =Integer.parseInt(super.getRequest().getParameter("audit"));
 		Long said = Long.parseLong(super.getRequest().getParameter("said"));
-		System.err.println("audit--" + auditInt);
-		System.err.println("said --" + said);
-		if(auditInt ==5) { //通过
-			if(applyDetailsService.editSaid(said,auditInt)) {
+		String autime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+		//当前用户名称
+		String auname =String.valueOf(SecurityUtils.getSubject().getSession().getAttribute("name"));
+		System.err.println("当前用户--" + auname);
+		if(status ==5) { //通过
+			if(applyDetailsService.editSaid(said,status, autime,auname)) {
 				super.setMsgAndUrl(mav, "storage.audit.list.prepare.action", "vo.editpass.success", TITLE); 		
 			}
-		}else if( auditInt ==3) {//拒绝
-			if(applyDetailsService.editSaid(said,auditInt)) {
+		}else if( status ==3) {//拒绝
+			if(applyDetailsService.editSaid(said,status,autime,auname)) {
 				super.setMsgAndUrl(mav, "storage.audit.list.prepare.action", "vo.editpass.failure", TITLE); 		
 			}
 		}else {
@@ -83,8 +89,6 @@ public class StorageAuditActionBack extends AbstractAction {
 	public Object stock() {	//根据wid 获取仓库信息
 		long wid = Long.parseLong(super.getRequest().getParameter("wid"));
 		return applyDetailsService;
-		
-		
 	}
 	
 }

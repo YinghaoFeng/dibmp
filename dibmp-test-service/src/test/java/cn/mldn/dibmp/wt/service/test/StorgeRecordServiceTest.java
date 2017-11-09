@@ -1,5 +1,7 @@
 package cn.mldn.dibmp.wt.service.test;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -32,8 +34,11 @@ public class StorgeRecordServiceTest {
 	}
 	@Test
 	public void rdListTest() {
-		System.err.println("列表显示 + " + RecordService.listRecord("title", "b", 2L, 5));
-		System.out.println("-=");
+		Map<String, Object> map = RecordService.listRecord(null,null, 1L, 5);
+		System.err.println("仓库 =="  +map.get("findSplit"));
+		System.err.println("商品数量==" + map.get("CountNum"));
+		System.err.println("商品价格 + " + map.get("SumPrice"));
+	
 	}
 	
 }
