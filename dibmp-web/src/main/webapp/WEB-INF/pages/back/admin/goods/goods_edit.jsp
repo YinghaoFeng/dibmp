@@ -40,7 +40,7 @@
 								<!-- 定义表单提示文字 -->
 								<label class="col-md-3 control-label" for="tid">商品分类：</label>
 								<div class="col-md-5">
-									<select id="wiid" name="wiid" class="form-control" disabled="disabled">
+									<select id="wiid" name="wiid" class="form-control">
 										<option value="">====== 请选择商品类型 ======</option>
 										<c:forEach items="${allWitem}" var="witem">
 											<c:if test="${Goods.wiid==witem.wiid}">
@@ -90,7 +90,7 @@
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
 									<input type="text" id="weight" name="weight" class="form-control"
-										placeholder="请输入商品重量." value="${Goods.weight}" disabled="disabled">
+										placeholder="请输入商品重量." value="${Goods.weight}" >
 								</div>
 								<!-- 定义表单错误提示显示元素 -->
 								<div class="col-md-4" id="weightMsg"></div>
@@ -101,12 +101,12 @@
 								<div class="col-md-5">
 									<!-- 定义表单输入组件 -->
 									<span class="text-center">
-										<img src="upload/goods/${Goods.photo}" style="width:100px;"/> 
+										<img src="http://192.168.28.138/${Goods.photo}" style="width:200px;"/> 
 									</span>
 									<span>
-										<input type="hidden" id="photo" value="${Goods.photo}"/>
+										<input type="hidden" id="photo" name="photo" value="${Goods.photo}"/>
 										<input type="file" id="pic" name="pic" class="form-control"
-										placeholder="请上传商品照片" value="${Goods.photo}">					
+										placeholder="请上传商品照片">					
 									</span>
 								</div>
 								<!-- 定义表单错误提示显示元素 -->

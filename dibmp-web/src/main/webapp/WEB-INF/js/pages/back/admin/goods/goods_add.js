@@ -1,7 +1,7 @@
 
 $(function(){
 	$(wiid).on("change",function(){
-//		 console.log(this.value);
+	 console.log(this.value);
 			if (this.value != "") {	// 有内容，需要进行ajax异步加载
 				$.post("pages/back/admin/goods/listSubtype.action",{"wiid":this.value},
 						function(data){

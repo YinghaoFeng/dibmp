@@ -1,8 +1,5 @@
 package cn.mldn.dibmp.web.action.back;
 
-import java.io.File;
-import java.util.UUID;
-
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
@@ -17,6 +14,7 @@ import cn.mldn.dibmp.ccc.service.ISubtypeService;
 import cn.mldn.dibmp.ccc.service.IWitemService;
 import cn.mldn.dibmp.vo.Goods;
 import cn.mldn.util.action.abs.AbstractAction;
+import cn.mldn.util.fastdfs.FastDFS;
 import cn.mldn.util.web.SplitPageUtil;
 
 @Controller
@@ -48,26 +46,17 @@ public class GoodsActionBack extends AbstractAction {
 	}
 	@RequestMapping("add")
 	public ModelAndView add(Goods goods, MultipartFile pic) {
-		
 		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
 		if(pic==null||pic.isEmpty()) {
-			goods.setPhoto("nophoto.jpg");
+			goods.setPhoto("group1/M00/00/00/wKgclVoDyeOAJIEHAAA21Ria8C4574.jpg");
 		}else {
-			String fileExt = pic.getOriginalFilename().substring(pic.getOriginalFilename().lastIndexOf("."));
-			String fileName = UUID.randomUUID()+ fileExt;
-			String filePath = super.getRequest().getServletContext().getRealPath("/upload/goods/") + UUID.randomUUID() + fileExt;
-			try {
-				pic.transferTo(new File(filePath));
-				goods.setPhoto(fileName);
-				if(goodsService.add(goods, (String)SecurityUtils.getSubject().getSession().getAttribute("mid"))) {
-					super.setMsgAndUrl(mav, "goods.add.action", "vo.add.success", TITLE);
-				}else {
-					super.setMsgAndUrl(mav, "goods.add.action", "vo.add.failure", TITLE);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+			String fileName = FastDFS.upload(pic);
+			goods.setPhoto(fileName);
+			if(goodsService.add(goods, (String)SecurityUtils.getSubject().getSession().getAttribute("mid"))) {
+				super.setMsgAndUrl(mav, "goods.add.action", "vo.add.success", TITLE);
+			}else {
 				super.setMsgAndUrl(mav, "goods.add.action", "vo.add.failure", TITLE);
-			} // 进行文件转存
+			}
 		}
 		return mav;
 	} 
@@ -87,23 +76,15 @@ public class GoodsActionBack extends AbstractAction {
 	@RequestMapping("edit")
 	public ModelAndView edit(Goods goods,MultipartFile pic) {
 		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
-//		if(pic!=null) {
-//			String fileExt = pic.getOriginalFilename().substring(pic.getOriginalFilename().lastIndexOf("."));
-//			String fileName = UUID.randomUUID()+ fileExt;
-//			String filePath = super.getRequest().getServletContext().getRealPath("/upload/goods/") + UUID.randomUUID() + fileExt;
-//			try {
-//				pic.transferTo(new File(filePath));
-//				goods.setPhoto(fileName);
-				if(goodsService.update(goods, (String)SecurityUtils.getSubject().getSession().getAttribute("mid"))) {
-					super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.success", TITLE);
-				}else {
-					super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.failure", TITLE);
-				}
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.failure", TITLE);
-//			} // 进行文件转存
-//		}
+		if(pic!=null) {
+			String fileName = FastDFS.upload(pic);
+			goods.setPhoto(fileName);
+		}
+		if(goodsService.update(goods, (String)SecurityUtils.getSubject().getSession().getAttribute("mid"))) {
+			super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.success", TITLE);
+		}else {
+			super.setMsgAndUrl(mav, "goods.list.action", "vo.edit.failure", TITLE);
+		}
 		return mav;
 	}
 	

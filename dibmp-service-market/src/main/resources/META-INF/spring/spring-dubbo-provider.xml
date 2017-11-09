@@ -19,7 +19,7 @@
 	<bean id="warehouseServiceImpl" class="cn.mldn.dibmp.service.impl.WarehouseServiceImpl"></bean>
 	<bean id="cityServiceImpl" class="cn.mldn.dibmp.service.impl.CityServiceImpl"></bean>
 	<bean id="provinceServiceImpl" class="cn.mldn.dibmp.service.impl.ProvinceServiceImpl"></bean>
-	<!-- 声明需要暴露的服务接口 --> 
+	<!-- 声明需要暴露的服务接口 -->   
 	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IWitemService" ref="witemServiceImpl" version="${dubbo.interface.version}" />
 	<dubbo:service interface="cn.mldn.dibmp.ccc.service.ISubtypeService" ref="subtypeServiceImpl" version="${dubbo.interface.version}" />
 	<dubbo:service interface="cn.mldn.dibmp.ccc.service.IStorgeApplyService" ref="storgeApplyServiceImpl" version="${dubbo.interface.version}" />

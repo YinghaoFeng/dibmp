@@ -19,6 +19,10 @@
 	
 	<dependencies>
 		<dependency>
+			<groupId>com.github.kischang</groupId>
+			<artifactId>fastdfs-client</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>cn.mldn</groupId>
 			<artifactId>dibmp-util</artifactId>
 		</dependency>
