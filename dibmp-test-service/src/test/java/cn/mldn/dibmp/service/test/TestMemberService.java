@@ -1,5 +1,7 @@
 package cn.mldn.dibmp.service.test;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -25,5 +27,12 @@ public class TestMemberService extends TestCase {
 	@Test
 	public void testMembetRoleAndAction() {
 		System.err.println(this.memberService.getRoleAndActionByMember("mldn-warehouse"));
+	}
+	@Test
+	public void testDeptAndLevelByMember() {
+	   Map<String, Object> member = this.memberService.getDeptAndLevelByMember("老王");
+	   System.err.println("对象数据{==}" + member.get("allMember").toString());
+	   System.err.println("对象职位数据{==}" + member.get("allLevle").toString());
+	   System.err.println("对象部门数据{==}" + member.get("allDept").toString());
 	}
 }

@@ -11,9 +11,13 @@ import org.springframework.stereotype.Service;
 
 import cn.mldn.dibmp.dao.IStorageApplyDAO;
 import cn.mldn.dibmp.dao.IStorageApplyDetailsDAO;
+import cn.mldn.dibmp.dao.ISubtypeDAO;
+import cn.mldn.dibmp.dao.IWarehouseDAO;
+import cn.mldn.dibmp.dao.IWitemDAO;
 import cn.mldn.dibmp.service.abc.AbstractStirageService;
 import cn.mldn.dibmp.vo.StorageApply;
 import cn.mldn.dibmp.vo.StorageApplyDetails;
+import cn.mldn.dibmp.vo.Warehouse;
 import cn.mldn.dibmp.wt.service.IStorgeApplyService;
 import cn.mldn.util.service.abs.AbstractService;
 @Service
@@ -22,6 +26,12 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 	private IStorageApplyDAO storagerApplyDAO;
 	@Resource
 	private IStorageApplyDetailsDAO applyDetailsDAO;
+	@Resource
+	private IWarehouseDAO wareHouserDAO;
+	@Resource
+	private IWitemDAO witemDAO;
+	@Resource
+	private ISubtypeDAO subtyDAO;
 	@Override
 	public boolean add(StorageApply vo) {
 		return storagerApplyDAO.doCreate(vo);
@@ -34,7 +44,17 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		}
 		map.put("status",status);
 		map.put("said", said);
-		return storagerApplyDAO.doEditStatus(map);
+		return this.storagerApplyDAO.doEditStatus(map);
+	}
+
+	@Override
+	public Map<String, Object> listWareHouseAndApplyByWid(Long wid) {
+		Map<String, Object> map = new HashMap<String,Object>();
+		Warehouse wareHouse = this.wareHouserDAO.findByWid(wid);
+		map.put("allWareHouse", wareHouse);
+		map.put("allWitem", this.witemDAO.findByWiid(wareHouse.getWiid()));
+		map.put("allSubtype",this.subtyDAO.findAllByWitem(wareHouse.getWiid()));
+		return map;
 	}
 
 	@Override
@@ -52,14 +72,16 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		Map<String,Object> maps = new HashMap<String,Object>();
 		Map<Long, Object> sumMap = super.LongObjectMap();
 		Map<Long, Object> countMap = super.LongObjectMap();
-		List<StorageApply> apply = storagerApplyDAO.findSplit(map);
+		Map<Long, Object> warehouseMap = super.LongObjectMap();
+		List<StorageApply> apply = this.storagerApplyDAO.findSplit(map);
 		Iterator<StorageApply> rs = apply.iterator();
 		while(rs.hasNext()){
 			StorageApply sApply = new StorageApply();
 			sApply = rs.next(); 
-			countMap.put(sApply.getSaid(),applyDetailsDAO.findCountNum(sApply.getSaid()));	  
-			if(applyDetailsDAO.findSumPrice(sApply.getSaid()) != null) {
-				sumMap.put(sApply.getSaid(),super.HandingBigDecimal(applyDetailsDAO.findSumPrice(sApply.getSaid())));
+			countMap.put(sApply.getSaid(),this.applyDetailsDAO.findCountNum(sApply.getSaid()));	  
+			warehouseMap.put(sApply.getWid(), this.wareHouserDAO.findByWid(sApply.getWid()));
+			if(this.applyDetailsDAO.findSumPrice(sApply.getSaid()) != null) {
+				sumMap.put(sApply.getSaid(),super.HandingBigDecimal(this.applyDetailsDAO.findSumPrice(sApply.getSaid())));
 			}else {
 				sumMap.put(sApply.getSaid(),0);
 			}
@@ -68,15 +90,21 @@ public class StorgeApplyServiceImpl extends AbstractStirageService implements IS
 		maps.put("findSplit",apply);	//商品信息
 		maps.put("CountNum",countMap);	//商品数量
 		maps.put("SumPrice",sumMap);	//商品价格
-		maps.put("allRecorders",storagerApplyDAO.CountSplit(map));
+		maps.put("allWarehosut", warehouseMap);
+		maps.put("allRecorders",this.storagerApplyDAO.CountSplit(map));
 		return maps;
 	}
 	@Override
-	public Map<String, Object> getWarehouseGoodsBySaid(Long said) {
+	public Map<String, Object> getWarehouseGoodsBySaid(Long said,Integer status) {
 		Map<String, Object> map = super.StringObjectMap();
-		map.put("apply", storagerApplyDAO.findBySaid(said));
-		map.put("sum", super.HandingBigDecimal(applyDetailsDAO.findSumPrice(said))) ;
-		map.put("applyDetails", applyDetailsDAO.findBySaid(said));
+		Map<String, Object> statusMap = super.StringObjectMap();
+		statusMap.put("said", said);
+		statusMap.put("status", status);
+		StorageApply apply = this.storagerApplyDAO.findBySaid(statusMap);
+		map.put("apply",apply);
+		map.put("sum", super.HandingBigDecimal(this.applyDetailsDAO.findSumPrice(said))) ;
+		map.put("applyDetails", this.applyDetailsDAO.findBySaid(said));
+		map.put("allWarehosut", this.wareHouserDAO.findByWid(apply.getWid()));
 		return map;
 	}
 

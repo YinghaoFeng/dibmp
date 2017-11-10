@@ -30,16 +30,18 @@
 							</tr>
 							<tr>
 								<td><strong>存入仓库名称：</strong></td>
-								<td><span id="showWarehouse" style="cursor: pointer;">${allApply.pid}
-										${allApply.cid} 通州一号仓库</span></td>
+								<td><span id="showWarehouse-${allApply.wid}" 
+										style="cursor: pointer;">${allWarehosut.address}
+									</span>
+								</td>
 							</tr>
 							<tr>
 								<td><strong>仓库类型：</strong></td>
-								<td>${allApply.wiid}</td>
+								<td>${allWitem.title}</td>
 							</tr>
 							<tr>
 								<td><strong>申请人：</strong></td>
-								<td><span id="showMember" style="cursor: pointer;">${allApply.appmid}</span></td>
+								<td><span id="showMember_${allApply.appmid}" style="cursor: pointer;">${allApply.appmid}</span></td>
 							</tr>
 							<tr>
 								<td><strong>入库商品总价：</strong></td>
@@ -49,11 +51,6 @@
 								<td><strong>入库单备注信息：</strong></td>
 								<td>${allApply.note}</td>
 							</tr>
-							<tr>
-								<td><strong>审核历史：</strong></td>
-								<td>历史的所有审核信息</td>
-							</tr>
-							
 						</table>
 					</div>
 					<div>
@@ -76,18 +73,18 @@
 									<!-- 定义表单错误提示显示元素 -->
 									<div class="col-md-4" id="auditMsg"></div>
 								</div>
-								<!-- 定义输入表单样式，其中id主要用于设置颜色样式 -->
-								<div class="form-group" id="noteDiv">
-									<!-- 定义表单提示文字 -->
+								 <!-- 定义输入表单样式，其中id主要用于设置颜色样式 -->
+								<!-- <div class="form-group" id="noteDiv">
+									定义表单提示文字
 									<label class="col-md-3 control-label" for="note">审核备注：</label>
 									<div class="col-md-5">
-										<!-- 定义表单输入组件 -->
+										定义表单输入组件
 										<textarea id="note" name="note" rows="3" class="form-control"
 											placeholder="请输入审核所给出的意见信息" rows="10"></textarea>
 									</div>
-									<!-- 定义表单错误提示显示元素 -->
+									定义表单错误提示显示元素
 									<div class="col-md-4" id="noteMsg"></div>
-								</div>
+								</div> -->
 								<div class="form-group">
 									<div class="col-md-5 col-md-offset-3">
 										<input  type="hidden" id="said" name="said" value="${allApply.said}">

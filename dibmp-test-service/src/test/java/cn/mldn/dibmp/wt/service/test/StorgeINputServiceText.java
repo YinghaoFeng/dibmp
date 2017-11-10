@@ -18,7 +18,7 @@ public class StorgeINputServiceText {
 	private IStorgeInputService inputService;
 	@Test
 	public void listInputBckeText() {
-		 Map<String, Object> map = inputService.listInputBcke(2L);
+		 Map<String, Object> map = inputService.listInputBcke(2L,"1");
 		 if(map.isEmpty()) {
 			 System.err.println("查询的仓库数据 --" + map.get("applyAll"));
 			 System.err.println("查询的商品数据 --" + map.get("details"));

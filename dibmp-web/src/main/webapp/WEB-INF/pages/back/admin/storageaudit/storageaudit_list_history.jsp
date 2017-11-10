@@ -40,15 +40,15 @@
 					<c:forEach items="${findSplit}" var="record">
 						<tr>
 							<th class="text-center" style="width:10%;">${record.said}</th> 
-							<td class="text-left"><span id="sid-1" style="cursor:pointer;">${record.title}</span></td>
-							<td class="text-left"><span id="wid-1" style="cursor:pointer;">${record.wid}一号库</span></td>
+							<td class="text-left"><span id="sid-${record.said}" style="cursor:pointer;">${record.title}</span></td>
+							<td class="text-left"><span id="wid-${record.wid}" style="cursor:pointer;">${allWarehosut[record.wid].address}</span></td>
 							<td class="text-center">
 								<fmt:formatDate value="${record.autime}" pattern="yyyy-MM-dd"/>
 							</td>
-							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${record.appmid}</span></td>
+							<td class="text-center"><span id="mid_${record.appmid}" style="cursor:pointer;">${record.appmid}</span></td>
 							<td class="text-center">${CountNum[record.said]}</td>
 							<td class="text-center">${SumPrice[record.said]}</td>
-							<td class="text-center"><span id="mid-admin" style="cursor:pointer;">${record.auname}</span></td>
+							<td class="text-center"><span id="mid_${record.appmid}" style="cursor:pointer;">${record.auname}</span></td>
 						</tr>
 						</c:forEach>
 					</tbody>

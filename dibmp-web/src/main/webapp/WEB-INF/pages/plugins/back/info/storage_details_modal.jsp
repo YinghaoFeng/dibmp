@@ -17,7 +17,7 @@
 						</tr>
 						<tr>
 							<td><strong >存入仓库名称：</strong></td>
-							<td id="names"></td>
+							<td id="name"></td>
 						</tr>
 						<tr>
 							<td><strong >仓库类型：</strong></td>

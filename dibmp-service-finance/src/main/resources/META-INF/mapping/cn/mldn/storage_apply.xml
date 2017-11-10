@@ -40,9 +40,9 @@
 		FROM storage_apply WHERE status=1;
 	</select>
 	
-	<select id="findBySaid" parameterType="Long" resultType="StorageApply">
+	<select id="findBySaid" parameterType="map" resultType="StorageApply">
 		SELECT said,title,pid,cid,wiid,wid,note,status,appmid,auname,apptime,autime
-		FROM storage_apply WHERE said=#{said} and status=1;
+		FROM storage_apply WHERE said=#{said} and status=#{status};
 	</select>
 	
 </mapper>

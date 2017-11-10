@@ -3,11 +3,33 @@ var sid =href.substr(href.indexOf("?"+1));
 
 $(function(){
 
-	$("#showMember").on("click",function(){
+	$("span[id^=showMember_]").on("click",function(){
 		$("#memberInfo").modal("toggle") ;
+		mid = this.id.split("_")[1] ;
+		$.post("pages/back/admin/storageaudit/levelanddeptby_member.action",{"mid":mid},function(data){
+			//console.log(data.sum)
+			console.log(data);
+			$("#names").html(data.allMember.name);
+			$("#dename").html(data.allLevle.title);
+			$("#levename").html(data.allDept.dname);
+			$("#address").html(data.allMember.phone);
+			$("#note").html(data.allMember.note);
+		})
+		
+		
 	}) ;
-	$("#showWarehouse").on("click",function(){
+	$("span[id^=showWarehouse-]").on("click",function(){
 		$("#warehouseInfo").modal("toggle") ;
+		wid = this.id.split("-")[1] ;
+		$.post("pages/back/admin/storageaudit/wareHouseAndApply.action",{"wid":wid},function(data){
+			console.log(data);
+			$("#namew").html(data.allWareHouse.name);
+			$("#addressw").html(data.allWareHouse.address);
+			$("#wiidl").html(data.allWitem.title);
+			$("#max").html(data.allWareHouse.maximum);
+			$("#num").html(data.allWareHouse.currnum);
+			$("#notey").html(data.allWareHouse.note);
+		});
 	}) ;
 	
 

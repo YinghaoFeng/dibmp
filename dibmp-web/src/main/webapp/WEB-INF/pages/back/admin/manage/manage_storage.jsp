@@ -31,11 +31,11 @@
 						</tr>
 						<tr>
 							<td><strong>存入仓库名称：</strong></td>
-							<td>${applyAll.pid} ${applyAll.cid} 通州一号仓库</td>
+							<td>${allWareHouse.address}</td>
 						</tr>
 						<tr>
 							<td><strong>仓库类型：</strong></td>
-							<td>${applyAll.wiid}</td>
+							<td>${allWitem.title}</td>
 						</tr>
 						<tr>
 							<td><strong>备注信息：</strong></td>

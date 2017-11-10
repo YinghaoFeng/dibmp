@@ -22,6 +22,8 @@ import cn.mldn.util.web.SplitPageUtil;
 @RequestMapping("/pages/back/admin/manage/*")
 public class ManageActionBack extends AbstractAction {
 	private static final String TITLE = "仓库管理" ;
+	private static final String NOTSTATUS ="1";	//查询没有审核的信息
+	private static final String YESSTATUS="5";	//查询已经审核通过的信息
 	@Resource
 	private IStorgeInputService inputService;
 	@Resource
@@ -39,9 +41,8 @@ public class ManageActionBack extends AbstractAction {
 	@RequestMapping("storage_input")
 	public ModelAndView storageInput(Long sid) {
 		ModelAndView mav = new ModelAndView(super.getPage("forward.page"));
-		//SecurityUtils.getSubject().getSession().setAttribute("sid",sid);
 		redisString.opsForValue().set("display-sid", sid);
-		if(inputService.isSaidVo(sid)) {
+		if(inputService.isSaidVo(sid,YESSTATUS)) {
 			super.setMsgAndUrl(mav, "manage.storage.input.display.action", "vo.inputfound.failure", TITLE);
 		}else {
 			super.setMsgAndUrl(mav, "manage.storage.input.pre.action", "vo.inputfound.success", TITLE);
@@ -54,7 +55,7 @@ public class ManageActionBack extends AbstractAction {
 		//Long sid = Long.parseLong( String.valueOf(SecurityUtils.getSubject().getSession().getAttribute("sid")));
 		Long sid = redisString.opsForValue().get("display-sid");
 		System.err.println("sid==" + sid);
-		Map<String, Object> map = inputService.listInputBcke(sid);
+		Map<String, Object> map = inputService.listInputBcke(sid,YESSTATUS);
 		mav.addAllObjects(map);
 		return mav;
 	}
@@ -64,9 +65,9 @@ public class ManageActionBack extends AbstractAction {
 		record.setStatus(5);//添加成功
 		record.setInmid(String.valueOf(SecurityUtils.getSubject().getSession().getAttribute("name")));
 		record.setSaid(redisString.opsForValue().get("display-sid"));
-		System.err.println("传递进来的对象值---  | " + record);
+		//System.err.println("传递进来的对象值---  | " + record);
 		boolean add = recordServce.add(record);
-		System.err.println("添加数据-"+ add);
+		//System.err.println("添加数据-"+ add);
 		return add;
 	}
 	@ResponseBody
@@ -75,9 +76,9 @@ public class ManageActionBack extends AbstractAction {
 		record.setStatus(3);//添加失败
 		record.setInmid(String.valueOf(SecurityUtils.getSubject().getSession().getAttribute("name")));
 		record.setSaid(redisString.opsForValue().get("display-sid"));
-		System.err.println("传递进来的对象值---  | " + record);
+		//System.err.println("传递进来的对象值---  | " + record);
 		boolean add = recordServce.add(record);
-		System.err.println("添加数据-"+ add);
+		//System.err.println("添加数据-"+ add);
 		return add;
 	}
 	
@@ -85,7 +86,7 @@ public class ManageActionBack extends AbstractAction {
 	@RequestMapping("storage_shop")
 	public Object storageShop() {
 		long said = Long.parseLong(super.getRequest().getParameter("said"));
-		return inputService.listInputBcke(said);
+		return inputService.listInputBcke(said,YESSTATUS);
 
 	}
 	@RequestMapping("distribution_input_pre")

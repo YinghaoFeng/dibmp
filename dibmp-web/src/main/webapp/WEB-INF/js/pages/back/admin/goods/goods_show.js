@@ -4,6 +4,7 @@ $(function() {
 		$(this).on("click",function(){
 			mid = this.id.split("-")[1] ;
 			$("#goodsRecordInfo").modal("toggle") ; 
+			
 		}) ;
 	}) ;
 	$('#storageDetails').on('show.bs.collapse', function () {

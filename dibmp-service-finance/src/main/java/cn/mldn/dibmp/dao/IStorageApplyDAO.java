@@ -40,10 +40,9 @@ public interface IStorageApplyDAO {
 	 */
 	public Long CountSplit(Map<String,Object> map);
 	/**
-	 * 
-	 * 通过said查询出所有的仓库申请表中的信息，里面存储了仓库的信息
-	 * @param said  待审核表的编号
+	 * 通过 said 和 status 查询需要出要查询数据
+	 * @param map status 1 未审核 ，5审核通过
 	 * @return
 	 */
-	public StorageApply findBySaid (Long said);
+	public StorageApply findBySaid (Map<String, Object> map);
 }

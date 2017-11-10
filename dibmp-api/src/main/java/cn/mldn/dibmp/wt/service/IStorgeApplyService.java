@@ -44,8 +44,17 @@ public interface IStorgeApplyService {
 	public Map<String, Object> listSplitFont(String column,String keyWord,Long currentPage,Integer lineSize);
 	/**
 	 * 根据said 仓库的编号获取的到每一个仓库所对应的商品个数
-	 * @param said 当前仓库的编号
-	 * @return
+	 * @param said 当前仓库的编号 status 当前仓库的状态
+	 * @return  当前信息
 	 */
-	public Map<String, Object> getWarehouseGoodsBySaid(Long said);
+	public Map<String, Object> getWarehouseGoodsBySaid(Long said,Integer status);
+	/**
+	 * 根据 wid 查询仓库的所有信息
+	 * @param wid 当前仓库信息
+	 * @return 当前查询有一下几个返回值
+	 * 1.key="allWareHouse" value="当前仓库的所有信息"
+	 * 2.key="allWitem" value="当前仓库中仓库的类型"
+	 * 3.key="allSubtype" value="当前仓库类型中包含的种类"
+	 */
+	public Map<String, Object> listWareHouseAndApplyByWid(Long wid);
 }

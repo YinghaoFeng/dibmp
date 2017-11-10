@@ -21,4 +21,13 @@ public interface IMemberService {
 	 * 2、key = allActions、value = 该用户具备的所有权限
 	 */
 	public Map<String,Set<String>> getRoleAndActionByMember(String mid) ;
+	/**
+	 * 根据指定的用户编号获得其对应的所有信息（部门、职位）
+	 * @param name 用户姓名
+	 * @return 返回信息里面包含了 三类数据
+	 * 1.key = allMember value =该用户的信息
+	 * 2.key = allDept  value = 该用户的部门
+	 * 3.key = allLeve  value = 该用户的职位
+	 */
+	public Map<String,Object> getDeptAndLevelByMember(String name);
 }

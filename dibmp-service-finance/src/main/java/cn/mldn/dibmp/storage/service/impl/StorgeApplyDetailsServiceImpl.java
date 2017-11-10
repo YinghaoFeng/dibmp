@@ -11,9 +11,12 @@ import org.springframework.stereotype.Service;
 
 import cn.mldn.dibmp.dao.IStorageApplyDAO;
 import cn.mldn.dibmp.dao.IStorageApplyDetailsDAO;
+import cn.mldn.dibmp.dao.IWarehouseDAO;
+import cn.mldn.dibmp.dao.IWitemDAO;
 import cn.mldn.dibmp.service.abc.AbstractStirageService;
 import cn.mldn.dibmp.vo.StorageApply;
 import cn.mldn.dibmp.vo.StorageApplyDetails;
+import cn.mldn.dibmp.vo.Warehouse;
 import cn.mldn.dibmp.wt.service.IStorgeApplyDetailsService;
 @Service
 public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implements IStorgeApplyDetailsService{
@@ -21,6 +24,10 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 	private IStorageApplyDetailsDAO storageApplyDetailsDAO;
 	@Resource
 	private IStorageApplyDAO storagerApplyDAO;
+	@Resource
+	private IWarehouseDAO wareHouserDAO;
+	@Resource
+	private IWitemDAO witemDAO;
 	@Override
 	public boolean add(StorageApplyDetails vo) {
 		return storageApplyDetailsDAO.doCreate(vo);
@@ -43,8 +50,15 @@ public class StorgeApplyDetailsServiceImpl extends AbstractStirageService implem
 	@Override
 	public Map<String, Object> listGoodsBack(Long said) {
 		HashMap<String, Object> map = new HashMap<String,Object>();
-		map.put("allApply", storagerApplyDAO.findBySaid(said));
+		Map<String, Object> statusMap = super.StringObjectMap();
+		statusMap.put("said", said);
+		statusMap.put("status", 1);
+		StorageApply apply = storagerApplyDAO.findBySaid(statusMap);
+		Warehouse houser = this.wareHouserDAO.findByWid(apply.getWid());
+		map.put("allApply", apply);
 		map.put("SumNums", super.HandingBigDecimal(storageApplyDetailsDAO.findSumPrice(said)));//查询所有单价
+		map.put("allWitem", this.witemDAO.findByWiid(houser.getWiid()));
+		map.put("allWarehosut",houser);
 		return map;
 	}
 	@Override
